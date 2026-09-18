@@ -3,7 +3,9 @@
 ## 프로젝트
 **PIONEER** — "Go. Lightly." 슬로건의 커스텀 폰케이스("The Plaque") 브랜드 랜딩 페이지.
 1972년 파이오니어 10호 탐사선과 그 금속판(Pioneer Plaque)에서 모티프를 가져온 컨셉으로, 고객의 세계관을 담은 케이스를 판매한다.
-라이브: https://pioneerstation.vercel.app/
+라이브(Next.js 버전): https://pioneer-iota-five.vercel.app/ (Vercel 프로젝트: `odd3/pioneer`)
+GitHub: https://github.com/jaeemin05/PIONEER
+참고 — https://pioneerstation.vercel.app/ 는 마이그레이션 이전의 구버전 정적 사이트가 올라가 있던 별개의 Vercel 계정/프로젝트로, 이 리포에서는 접근 불가(이번 Next.js 버전과 무관).
 
 ## 스택
 - **Next.js 16 (App Router) + React 19 + 순수 JS(.jsx, TypeScript 아님).** 원래 순수 정적 HTML 한 파일이었는데, 3D 요소 도입을 계기로 Next.js + react-three-fiber로 전체 이전함 (마이그레이션 계획: `~/.claude/plans/floofy-gliding-pine.md`).
@@ -13,7 +15,8 @@
 - 스타일링: Tailwind나 CSS-in-JS 없이 기존 커스텀 프로퍼티 기반 CSS를 `app/globals.css`에 거의 그대로 이식. 폰트도 `next/font` 대신 기존 Google Fonts `<link>` 태그 유지.
 - Next 16은 `next lint` 명령이 제거됨 — lint 설정/스크립트 없음 (요청받지 않았고, ESLint Flat Config로 새로 세팅하는 건 스코프 밖).
 - 로컬: `npm run dev` (Turbopack). 배포 전 `npm run build && npm run start`로 프로덕션 빌드 확인 권장. 별도 테스트 스위트 없음.
-- **Vercel 배포 시 주의**: 기존엔 "Other"(정적 사이트) 프리셋이었는데, 이제 Vercel 대시보드에서 Framework Preset을 "Next.js"로 바꿔야 함 — 코드가 아니라 프로젝트 설정 변경이라 자동으로 안 됨.
+- **Vercel 프로젝트 설정 주의**: `vercel project add`로 새로 만든 프로젝트는 Framework Preset이 기본값 "Other"로 생성됨 — 이 상태로 두면 `public/`(이미지만 있는 폴더)를 정적 사이트 루트로 서빙하려다 404가 남(실제로 겪음). `vercel project update <name> --framework nextjs --auto-detect output-directory`로 고쳐야 하고, 프리셋 바꾼 뒤엔 반드시 `vercel --prod --force`로 재배포해야 반영됨(설정 변경이 기존 배포에 소급 적용 안 됨).
+- **배포/자동배포**: GitHub 리포(`jaeemin05/PIONEER`)와 `vercel git connect`로 연동해둠 — main 브랜치에 push하면 자동 배포됨.
 
 ## 구조 (app/page.js가 조립하는 순서, 컴포넌트는 components/)
 1. `Header` — 로고 + 내비 + 스크롤 시 solid 배경 전환 (`site-header.scrolled`)
@@ -28,13 +31,15 @@
 10. `SystemSection` — World · Moment · Coordinates
 11. `Footer` + `SessionModal`/`SessionModalContext` — 세션 신청 모달, 4곳(Header/Shop/Destination/Footer)에서 Context로 트리거
 
+## 이미지 (public/, 섹션별 하위 폴더로 정리됨)
+Hero, Plaque Reveal, Heritage(spacecraft/plaque), Narrative 6개, Shop Signal 9개 + Origin 14개, System 3개 — 전부 실제 이미지 연결 완료. 폴더 구조와 각 슬롯 채우는 법은 `context-notes.md`의 "public/ 이미지 폴더 구조" 및 "이미지 슬롯 시스템(ImageSlot)" 항목 참고.
+**아직 안 채워진 것**: `Experience` 섹션 이미지 1개만 남음 (`components/Experience.jsx`의 `EXPERIENCE_IMG`).
+
 ## 알려진 갭 (의도적으로 유지 중, "고쳐야 할 버그"로 착각하지 말 것)
-- `spacecraft.jpg`, `plaque.jpg` 및 Signal/Origin 제품 이미지 — 로컬에 파일 없음, 404 그대로. `.ph`/`.ph-dark` 플레이스홀더로 표시됨. (`hero-bg.jpg`는 Hero3D로 대체되어 더 이상 존재하지 않음 — 유일하게 "해결된" 이미지 갭.)
 - `pioneer-heritage.html` — 존재하지 않는 페이지, 링크만 유지.
 - Signal "전체 보기", footer "Instagram" — `href="#"` 죽은 링크.
 - 세션 폼 제출 — 실제 백엔드 없음, 클라이언트에서 성공 화면만 토글.
 - 모바일 샵 스와이퍼는 로드 시 `window.innerWidth`를 1회만 체크 — 리사이즈해도 모드 안 바뀜(원본 동작 그대로 유지).
-- 라이브 배포본(https://pioneerstation.vercel.app/)에는 이 이미지들과 `pioneer-heritage.html`이 실제로 채워져 있을 가능성이 높음 — 로컬 작업이 배포본보다 오래된 콘텐츠 기준일 수 있으니 유의.
 
 ## 폼/CTA 동작
 - 세션 모달은 `components/SessionModalContext.jsx`의 Context로 열고 닫음 (`useSessionModal()`). DOM 쿼리셀렉터 방식(`data-session-open`) 아님.
