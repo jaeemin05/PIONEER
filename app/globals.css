@@ -529,7 +529,7 @@
             margin-top: 48px;
             margin-bottom: 2px;
             width: 100%;
-            height: 400px;
+            aspect-ratio: 16 / 7;
         }
 
 
