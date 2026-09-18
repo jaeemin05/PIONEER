@@ -30,6 +30,15 @@ function ScrollBackdrop() {
 }
 
 export default function Hero3D() {
+  // react-use-measure(@react-three/fiber 내부)가 프로덕션 빌드에서 마운트 시
+  // ResizeObserver 최초 콜백을 못 잡아 캔버스가 기본 크기(300x150)로 굳는 문제가 있음
+  // (dev에서는 React StrictMode의 effect 이중 실행이 우연히 이걸 가려줬음).
+  // 마운트 직후 resize 이벤트를 한 번 더 흘려서 강제로 재측정시킴.
+  useEffect(() => {
+    const id = requestAnimationFrame(() => window.dispatchEvent(new Event('resize')));
+    return () => cancelAnimationFrame(id);
+  }, []);
+
   return (
     <div style={{ position: 'absolute', inset: 0, zIndex: 1, pointerEvents: 'none' }}>
       <Canvas camera={{ position: [0, 0, 1] }} dpr={[1, 1.5]} gl={{ antialias: true, alpha: true }}>
