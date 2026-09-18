@@ -538,7 +538,7 @@
         .system-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 28px;
+            gap: 0;
             margin-top: 64px;
         }
         .system-img {
@@ -557,6 +557,10 @@
             font-size: 14px;
             color: var(--text-dim);
             line-height: 1.75;
+        }
+        .system-grid > div:not(:last-child) .system-title,
+        .system-grid > div:not(:last-child) .system-desc {
+            padding-right: 24px;
         }
         .system-note {
             margin-top: 48px;
@@ -1031,7 +1035,7 @@
             .slider-counter { display: none; }
 
             .experience-steps { grid-template-columns: 1fr; }
-            .system-grid { grid-template-columns: 1fr 1fr; gap: 20px; }
+            .system-grid { grid-template-columns: 1fr 1fr; gap: 20px 0; }
             .shop-grid { grid-template-columns: repeat(2, 1fr); }
             .shop-paths { grid-template-columns: 1fr; }
 
