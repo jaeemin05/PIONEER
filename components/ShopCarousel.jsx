@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { useFadeIn } from "@/hooks/useFadeIn";
 import ImageSlot from "./ImageSlot";
 
@@ -52,6 +52,15 @@ function MobileShopSwiper({ items }) {
   const itemWidth = () =>
     (trackRef.current?.children[0]?.offsetWidth || 0) + GAP;
   const tx = (idx) => -(idx * itemWidth()) + 24;
+
+  // 첫 렌더 시점엔 trackRef가 아직 null이라 itemWidth()가 0으로 계산되고,
+  // 그 값으로 초기 위치(-66px)가 굳어버림 — 실제 카드 너비를 잴 수 있게 된
+  // 마운트 직후(레이아웃 계산 후, 페인트 전) 한 번 더 정확한 위치로 보정.
+  useLayoutEffect(() => {
+    if (trackRef.current)
+      trackRef.current.style.transform = `translateX(${tx(cur)}px)`;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useEffect(() => {
     const grid = gridRef.current;
