@@ -69,6 +69,10 @@ export default function SessionModal() {
 
         {!submitted && (
           <div id="modal-form-wrap">
+            <div className="modal-event-banner">
+              <span className="modal-event-tag">EVENT</span>
+              <span>오픈 기념 · 선착순 30명 · Origin 세션 10% 할인 (예시 문구 — 실제 내용으로 교체 필요)</span>
+            </div>
             <div className="modal-eyebrow">Origin — Custom Plaque</div>
             <div className="modal-title" id="modal-title">나만의 Plaque를<br />만들어 드립니다.</div>
             <p className="modal-sub">
