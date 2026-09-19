@@ -78,14 +78,15 @@ export default function Narrative() {
     setCurrent(((idx % TOTAL) + TOTAL) % TOTAL);
   }, []);
 
-  // 슬라이드 폭을 %가 아니라 실측 픽셀로 옮김 — % 기준의 translateX는
-  // 트랙 자신의 박스 크기를 기준으로 계산되는데, 이게 브라우저마다
-  // (특히 모바일 사파리) 화면 폭과 어긋나면서 넘길수록 오차가 누적돼
-  // 씬이 점점 더 잘려 보이는 문제가 있었음. 실제 너비를 측정해서 고정.
+  // 슬라이드 폭을 %가 아니라 실측 픽셀로 옮김. 처음엔 첫 씬(children[0])의
+  // 너비를 쟀는데, 씬마다 텍스트 길이가 달라 특정 씬이 콘텐츠 때문에
+  // min-width:100%보다 살짝 더 넓게 렌더링되면 그 오차가 누적돼 뒤로
+  //갈수록 더 잘려 보일 수 있음. 콘텐츠 영향을 안 받는 wrap(뷰포트)
+  // 자체의 폭을 기준으로 삼아서 모든 씬이 항상 동일한 폭만큼 이동하게 함.
   useEffect(() => {
     const measure = () => {
-      if (trackRef.current?.children[0]) {
-        setSceneWidth(trackRef.current.children[0].offsetWidth);
+      if (wrapRef.current) {
+        setSceneWidth(wrapRef.current.offsetWidth);
       }
     };
     measure();

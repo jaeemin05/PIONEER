@@ -444,7 +444,10 @@
         }
 
         .narrative-scene {
+            width: 100%;
             min-width: 100%;
+            max-width: 100%;
+            overflow: hidden;
             display: grid;
             grid-template-columns: 55% 45%;
             min-height: 72vh;
