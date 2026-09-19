@@ -66,14 +66,31 @@ const SWIPE_THRESHOLD = 48;
 export default function Narrative() {
   const [current, setCurrent] = useState(0);
   const [dragging, setDragging] = useState(false);
+  const [sceneWidth, setSceneWidth] = useState(0);
   const sectionRef = useRef(null);
   const wrapRef = useRef(null);
+  const trackRef = useRef(null);
   const touchStartX = useRef(0);
   const mouseStartX = useRef(0);
   const isMouseDragging = useRef(false);
 
   const slideTo = useCallback((idx) => {
     setCurrent(((idx % TOTAL) + TOTAL) % TOTAL);
+  }, []);
+
+  // 슬라이드 폭을 %가 아니라 실측 픽셀로 옮김 — % 기준의 translateX는
+  // 트랙 자신의 박스 크기를 기준으로 계산되는데, 이게 브라우저마다
+  // (특히 모바일 사파리) 화면 폭과 어긋나면서 넘길수록 오차가 누적돼
+  // 씬이 점점 더 잘려 보이는 문제가 있었음. 실제 너비를 측정해서 고정.
+  useEffect(() => {
+    const measure = () => {
+      if (trackRef.current?.children[0]) {
+        setSceneWidth(trackRef.current.children[0].offsetWidth);
+      }
+    };
+    measure();
+    window.addEventListener('resize', measure);
+    return () => window.removeEventListener('resize', measure);
   }, []);
 
   useEffect(() => {
@@ -145,7 +162,7 @@ export default function Narrative() {
       </div>
 
       <div className={`slider-track-wrap${dragging ? ' dragging' : ''}`} ref={wrapRef}>
-        <div className="slider-track" style={{ transform: `translateX(-${current * 100}%)` }}>
+        <div className="slider-track" ref={trackRef} style={{ transform: `translateX(-${current * sceneWidth}px)` }}>
           {SCENES.map((scene, i) => (
             <div className="narrative-scene" key={i}>
               <ImageSlot

@@ -1,6 +1,6 @@
 'use client';
 
-import { Suspense, useEffect, useRef } from 'react';
+import { Suspense, useEffect, useRef, useState } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { Stars, Image as DreiImage } from '@react-three/drei';
 
@@ -39,13 +39,22 @@ export default function Hero3D() {
     return () => cancelAnimationFrame(id);
   }, []);
 
+  // 저사양 모바일 GPU에서 스크롤 중 버벅임 — 별 개수/해상도 배율/안티앨리어싱을
+  // 낮춰서 프레임당 렌더 부하를 줄임. 데스크톱은 기존 값 그대로 유지.
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => { setIsMobile(window.innerWidth <= 900); }, []);
+
   return (
     <div style={{ position: 'absolute', inset: 0, zIndex: 1, pointerEvents: 'none' }}>
-      <Canvas camera={{ position: [0, 0, 1] }} dpr={[1, 1.5]} gl={{ antialias: true, alpha: true }}>
+      <Canvas
+        camera={{ position: [0, 0, 1] }}
+        dpr={isMobile ? 1 : [1, 1.5]}
+        gl={{ antialias: !isMobile, alpha: true }}
+      >
         <Suspense fallback={null}>
           <ScrollBackdrop />
         </Suspense>
-        <Stars radius={100} depth={50} count={5000} factor={4} saturation={0} fade speed={0.5} />
+        <Stars radius={100} depth={50} count={isMobile ? 1800 : 5000} factor={4} saturation={0} fade speed={0.5} />
       </Canvas>
     </div>
   );
