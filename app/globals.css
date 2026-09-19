@@ -535,16 +535,16 @@
 
         /* SYSTEM */
         #system { background: var(--navy); }
+        .system-banner {
+            width: 100%;
+            aspect-ratio: 1280 / 426;
+            margin-top: 64px;
+            margin-bottom: 40px;
+        }
         .system-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 0;
-            margin-top: 64px;
-        }
-        .system-img {
-            width: 100%;
-            aspect-ratio: 1/1;
-            margin-bottom: 22px;
         }
         .system-title {
             font-family: 'Space Grotesk', sans-serif;
