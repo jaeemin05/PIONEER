@@ -11,10 +11,12 @@ import Destination from '@/components/Destination';
 import SystemSection from '@/components/SystemSection';
 import Footer from '@/components/Footer';
 import SessionModal from '@/components/SessionModal';
+import EventPopup from '@/components/EventPopup';
 
 export default function Home() {
   return (
     <SessionModalProvider>
+      <EventPopup />
       <Header />
       <Hero />
       <Opening />

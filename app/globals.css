@@ -793,6 +793,107 @@
         }
 
 
+        /* EVENT POPUP (홈 메인 진입 팝업) */
+        .event-popup-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 550;
+            background: rgba(2,6,15,0.7);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+        }
+        .event-popup-card {
+            position: relative;
+            background: #040D1E;
+            border: 1px solid rgba(180,255,0,0.25);
+            box-shadow: 0 0 60px rgba(180,255,0,0.08);
+            width: 100%;
+            max-width: 380px;
+            padding: 40px 32px 32px;
+            text-align: center;
+            animation: event-popup-in 0.5s cubic-bezier(0.22,1,0.36,1) both;
+        }
+        @keyframes event-popup-in {
+            from { opacity: 0; transform: scale(0.92) translateY(14px); }
+            to   { opacity: 1; transform: scale(1) translateY(0); }
+        }
+        .event-popup-close {
+            position: absolute;
+            top: 14px; right: 14px;
+            background: none;
+            border: none;
+            color: var(--gray);
+            font-size: 13px;
+            cursor: pointer;
+            padding: 6px;
+            transition: color 0.2s;
+        }
+        .event-popup-close:hover { color: var(--white); }
+        .event-popup-tag {
+            display: inline-block;
+            background: var(--green);
+            color: var(--navy);
+            font-family: var(--mono);
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            padding: 5px 12px;
+            margin-bottom: 20px;
+            animation: event-popup-pulse 1.8s ease-in-out infinite;
+        }
+        @keyframes event-popup-pulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(180,255,0,0.5); }
+            50% { box-shadow: 0 0 0 6px rgba(180,255,0,0); }
+        }
+        .event-popup-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            color: var(--white);
+            margin-bottom: 12px;
+        }
+        .event-popup-desc {
+            font-size: 14px;
+            color: var(--gray);
+            line-height: 1.7;
+            margin-bottom: 28px;
+        }
+        .event-popup-cta {
+            display: block;
+            width: 100%;
+            background: var(--green);
+            color: var(--navy);
+            font-family: var(--mono);
+            font-size: 11px;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            font-weight: 700;
+            padding: 16px 0;
+            border: none;
+            cursor: pointer;
+            transition: opacity 0.2s, transform 0.2s;
+            margin-bottom: 16px;
+        }
+        .event-popup-cta:hover { opacity: 0.85; transform: translateY(-1px); }
+        .event-popup-dismiss {
+            background: none;
+            border: none;
+            font-family: var(--mono);
+            font-size: 9px;
+            letter-spacing: 0.1em;
+            color: rgba(255,255,255,0.3);
+            cursor: pointer;
+            text-decoration: underline;
+            transition: color 0.2s;
+        }
+        .event-popup-dismiss:hover { color: var(--white); }
+
+
         /* MODAL */
         .modal-overlay {
             display: none;
@@ -839,28 +940,6 @@
             padding: 6px 10px;
         }
         .modal-close:hover { color: var(--white); background: rgba(2,6,15,0.7); }
-        .modal-event-banner {
-            margin: -56px -48px 28px;
-            padding: 14px 48px;
-            background: var(--green);
-            color: var(--navy);
-            display: flex;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 10px;
-            font-family: var(--mono);
-            font-size: 11px;
-            font-weight: 700;
-            letter-spacing: 0.02em;
-        }
-        .modal-event-tag {
-            background: var(--navy);
-            color: var(--green);
-            font-size: 9px;
-            letter-spacing: 0.2em;
-            padding: 3px 8px;
-            flex-shrink: 0;
-        }
         .modal-eyebrow {
             font-family: var(--mono);
             font-size: 9px;
@@ -970,7 +1049,6 @@
         @media (max-width: 600px) {
             .modal { padding: 48px 28px 40px; }
             .modal-title { font-size: 22px; }
-            .modal-event-banner { margin: -48px -28px 24px; padding: 12px 28px; font-size: 10px; }
         }
 
 
