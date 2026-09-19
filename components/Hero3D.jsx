@@ -6,20 +6,16 @@ import { Stars, Image as DreiImage } from '@react-three/drei';
 
 function ScrollBackdrop() {
   const meshRef = useRef(null);
-  const scrollRef = useRef(0);
 
-  useEffect(() => {
-    const onScroll = () => {
-      scrollRef.current = Math.min(window.scrollY / window.innerHeight, 1);
-    };
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
-  }, []);
-
+  // 모바일 브라우저는 관성 스크롤 중 scroll 이벤트를 촘촘히 안 쏘고
+  // 뭉텅이로(배치) 던지는 경우가 있어서, scroll 리스너로 값을 갱신하면
+  // 렌더 루프가 그 뜸해진 값을 그대로 읽어 계단식으로 버벅여 보임.
+  // scroll 이벤트에 기대지 않고 매 프레임 window.scrollY를 직접 읽어서
+  // 렌더 루프 자체의 일정한 타이밍에 맞춰 부드럽게 움직이게 함.
   useFrame(() => {
     const mesh = meshRef.current;
     if (!mesh) return;
-    const t = scrollRef.current;
+    const t = Math.min(window.scrollY / window.innerHeight, 1);
     mesh.position.z = -5 - t * 10;
     mesh.material.opacity = 1 - t * 0.9;
   });
