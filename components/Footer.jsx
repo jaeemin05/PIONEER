@@ -15,7 +15,6 @@ export default function Footer() {
         </div>
         <div className="footer-links">
           <a href="#narrative">Story</a>
-          <a href="#experience">Navigator</a>
           <a href="#shop">The PLANET</a>
           <a href="#" onClick={(e) => { e.preventDefault(); open(); }}>Session</a>
           <a href="#">Instagram</a>

@@ -508,47 +508,6 @@
         }
 
 
-        /* EXPERIENCE */
-        #experience { background: var(--navy); }
-        .experience-steps {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1px;
-            background: rgba(255,255,255,0.06);
-            border: 1px solid rgba(255,255,255,0.06);
-            margin-top: 0;
-        }
-        .exp-step {
-            background: var(--navy);
-            padding: 48px 36px;
-        }
-        .exp-num {
-            font-family: var(--mono);
-            font-size: 9px;
-            letter-spacing: 0.25em;
-            text-transform: uppercase;
-            color: var(--green);
-            margin-bottom: 20px;
-            display: block;
-        }
-        .exp-title {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 26px;
-            font-weight: 700;
-            color: var(--white);
-            margin-bottom: 14px;
-        }
-        .exp-copy {
-            font-size: 15px;
-            color: var(--text-dim);
-            line-height: 1.8;
-        }
-        .experience-img {
-            margin-top: 48px;
-            margin-bottom: 2px;
-            width: 100%;
-            aspect-ratio: 16 / 7;
-        }
 
 
         /* SYSTEM */
@@ -1154,7 +1113,6 @@
             .scene-text { padding: 40px 28px; }
             .slider-counter { display: none; }
 
-            .experience-steps { grid-template-columns: 1fr; }
             .system-grid { grid-template-columns: 1fr 1fr; gap: 20px 0; }
             .shop-grid { grid-template-columns: repeat(2, 1fr); }
             .shop-paths { grid-template-columns: 1fr; }

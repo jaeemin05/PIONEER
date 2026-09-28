@@ -18,7 +18,6 @@ export default function Header() {
       <a href="#" className="header-logo">PIONEER</a>
       <nav>
         <a href="#narrative">Story</a>
-        <a href="#experience">Navigator</a>
         <a href="#shop">The PLANET</a>
         <a
           href="#"
