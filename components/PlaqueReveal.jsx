@@ -38,15 +38,17 @@ export default function PlaqueReveal() {
             PLANET
           </h2>
           <p>
-            ‘사람에게도 각자의 좌표가 있다면 어떨까?’ 파이어니어 탐사선을 타고
-            당신만의 좌표를 찾아 떠납니다.{" "}
+            ‘사람에게도 각자의 좌표가 있다면 어떨까?’
+            <br />
+            파이어니어 탐사선을 타고 당신만의 좌표를 찾아 떠납니다.
+            <br />
             <button
               type="button"
               className={`blur-reveal${revealed ? " revealed" : ""}`}
               onClick={() => setRevealed(true)}
               aria-label={revealed ? undefined : "클릭해서 문구 보기"}
             >
-              그 행성은 무엇이 있을까요?
+              그 행성에는 무엇이 있을까요?
             </button>{" "}
             PIONEER는 그 행성을 세상에 하나뿐인 케이스로 만듭니다.
           </p>
