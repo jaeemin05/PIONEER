@@ -254,6 +254,21 @@
             margin-bottom: 40px;
             max-width: 400px;
         }
+        .blur-reveal {
+            font: inherit;
+            color: var(--cream);
+            background: none;
+            border: 0;
+            padding: 0;
+            cursor: pointer;
+            filter: blur(6px);
+            transition: filter 0.6s ease, color 0.6s ease;
+        }
+        .blur-reveal.revealed {
+            filter: none;
+            color: var(--pink);
+            cursor: default;
+        }
         .link-arrow {
             font-family: var(--mono);
             font-size: 9px;
