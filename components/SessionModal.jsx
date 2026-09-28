@@ -69,8 +69,8 @@ export default function SessionModal() {
 
         {!submitted && (
           <div id="modal-form-wrap">
-            <div className="modal-eyebrow">Origin — Custom Plaque</div>
-            <div className="modal-title" id="modal-title">나만의 Plaque를<br />만들어 드립니다.</div>
+            <div className="modal-eyebrow">Origin — Custom PLANET</div>
+            <div className="modal-title" id="modal-title">나만의 PLANET을<br />만들어 드립니다.</div>
             <p className="modal-sub">
               Navigator와의 짧은 대화가 시작입니다.<br />연락처만 남겨주시면 Navigator가 먼저 연락드립니다.
             </p>

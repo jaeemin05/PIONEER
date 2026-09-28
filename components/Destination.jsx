@@ -18,7 +18,7 @@ export default function Destination() {
           className="btn-primary"
           onClick={(e) => { e.preventDefault(); open(); }}
         >
-          나의 Plaque 만들기
+          나의 PLANET 만들기
         </a>
       </div>
     </section>

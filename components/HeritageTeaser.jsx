@@ -30,11 +30,11 @@ export default function HeritageTeaser() {
             </div>
           </a>
           <div className="heritage-item">
-            <span className="heritage-tag">The Plaque</span>
+            <span className="heritage-tag">The PLANET</span>
             <h3 className="heritage-title">금속판 하나,<br />우주로 보낸 기록</h3>
             <p className="heritage-body">
               탐사선에는 금속판이 실렸습니다. 인류가 누구인지, 어디서 왔는지를 새긴 것입니다. 언젠가
-              발견될 누군가를 위한 좌표. 우리는 그것을 The Plaque라고 부릅니다.
+              발견될 누군가를 위한 좌표. 우리는 그것을 The PLANET이라고 부릅니다.
             </p>
           </div>
           <a href="pioneer-heritage.html" className="heritage-img-box">

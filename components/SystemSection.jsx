@@ -8,15 +8,15 @@ const SYSTEM_IMG = '/system/System.jpg';
 const PILLARS = [
   {
     title: 'World',
-    desc: '그 별이 어떤 세계인지입니다. 광활하거나, 좁고 깊거나, 복잡하거나, 텅 비어있습니다.',
+    desc: '그 행성이 어떤 세계인지입니다. 광활하거나, 좁고 깊거나, 복잡하거나, 텅 비어있습니다.',
   },
   {
     title: 'Moment',
-    desc: '우주인이 그 별에서 무엇을 하는지입니다. 무언가를 향해 달려가거나, 처음으로 멈춰있거나.',
+    desc: '우주인이 그 행성에서 무엇을 하는지입니다. 무언가를 향해 달려가거나, 처음으로 멈춰있거나.',
   },
   {
     title: 'Coordinates',
-    desc: '그 별의 좌표입니다. 날짜, 위치, 번호. 세상에 하나뿐인 것입니다.',
+    desc: '그 행성의 좌표입니다. 날짜, 위치, 번호. 세상에 하나뿐인 것입니다.',
   },
 ];
 
@@ -27,7 +27,7 @@ export default function SystemSection() {
   return (
     <section id="system" className="section section-dark">
       <div className="section-inner">
-        <div className="section-label">The Plaque</div>
+        <div className="section-label">The PLANET</div>
         <h2
           style={{
             fontFamily: "'Space Grotesk', sans-serif",
@@ -41,7 +41,7 @@ export default function SystemSection() {
           World · Moment · Coordinates
         </h2>
         <p style={{ fontSize: '15px', color: 'var(--text-dim)', maxWidth: '480px', lineHeight: 1.85 }}>
-          고객의 별은 분류되지 않습니다. 유형이 없습니다. 같은 별은 없습니다.
+          고객의 행성은 분류되지 않습니다. 유형이 없습니다. 같은 행성은 없습니다.
         </p>
 
         <ImageSlot

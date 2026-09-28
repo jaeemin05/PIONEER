@@ -59,7 +59,7 @@ export default function Experience() {
             <div className="exp-title">받습니다</div>
             <p className="exp-copy">
               그 순간이 디자인이 됩니다. Navigator가 건넵니다. 당신의 World, Moment, Coordinates가 담긴
-              The Plaque입니다.
+              The PLANET입니다.
             </p>
           </div>
         </div>

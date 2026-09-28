@@ -19,13 +19,13 @@ export default function Header() {
       <nav>
         <a href="#narrative">Story</a>
         <a href="#experience">Navigator</a>
-        <a href="#shop">The Plaque</a>
+        <a href="#shop">The PLANET</a>
         <a
           href="#"
           className="nav-cta"
           onClick={(e) => { e.preventDefault(); open(); }}
         >
-          Plaque 만들기
+          PLANET 만들기
         </a>
       </nav>
     </header>
