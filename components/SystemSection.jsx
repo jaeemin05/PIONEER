@@ -38,7 +38,7 @@ export default function SystemSection() {
             whiteSpace: "nowrap",
           }}
         >
-          World · Moment · Coordinates
+          Explore · Navigate · Launch
         </h2>
         <p
           style={{
