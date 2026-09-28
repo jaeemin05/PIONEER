@@ -334,7 +334,6 @@
             transition: border-color 0.3s;
             min-height: 200px;
         }
-        .heritage-img-box:hover { border-color: rgba(180,255,0,0.35); }
         .heritage-img-ph {
             display: flex;
             flex-direction: column;
@@ -349,31 +348,12 @@
             padding: 24px;
         }
         .heritage-img-ph-icon { font-size: 28px; opacity: 0.2; }
-        .heritage-img-click {
-            position: absolute;
-            bottom: 0; left: 0; right: 0;
-            padding: 20px 28px;
-            background: linear-gradient(to top, rgba(2,6,15,0.92) 0%, transparent 100%);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
         .heritage-click-label {
             font-family: var(--mono);
             font-size: 8px;
             letter-spacing: 0.24em;
             text-transform: uppercase;
             color: var(--green);
-        }
-        .heritage-click-arrow {
-            font-family: var(--mono);
-            font-size: 11px;
-            color: var(--text-dim);
-            transition: color 0.2s, transform 0.2s;
-        }
-        .heritage-img-box:hover .heritage-click-arrow {
-            color: var(--green);
-            transform: translateX(5px);
         }
         @media (max-width: 900px) {
             .heritage-split { grid-template-columns: 1.4fr 0.4fr; }

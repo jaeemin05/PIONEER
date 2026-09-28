@@ -16,7 +16,9 @@ export default function HeritageTeaser() {
             <h3 className="heritage-title">
               정해진 디자인을 고르는 대신,
               <br />
-              내가 좋아하는 것에서 시작합니다.
+              <span style={{ color: "var(--pink)" }}>
+                내가 좋아하는 것에서 시작합니다.
+              </span>
             </h3>
             <p className="heritage-body">
               우리는 매일 무엇을 입고, 어디서 시간을 보낼지, 어떤 물건을 살지
@@ -31,11 +33,12 @@ export default function HeritageTeaser() {
               <br />
               <br />
               PIONEER는 여러 질문을 통해 취향과 기억을 모으고, 그 답들을 하나의
-              디자인으로 연결합니다. 그렇게 세상에 하나뿐인 나만의 케이스가
-              완성됩니다.
+              디자인으로 연결합니다.
+              <br />
+              그렇게 세상에 하나뿐인 나만의 케이스가 완성됩니다.
             </p>
           </div>
-          <a href="pioneer-heritage.html" className="heritage-img-box">
+          <div className="heritage-img-box">
             <img
               src="/heritage/spacecraft.jpg"
               alt="Pioneer 10 spacecraft"
@@ -49,10 +52,7 @@ export default function HeritageTeaser() {
                 opacity: 0.8,
               }}
             />
-            <div className="heritage-img-click">
-              <span className="heritage-click-arrow">CLICK →</span>
-            </div>
-          </a>
+          </div>
         </div>
       </div>
     </section>
