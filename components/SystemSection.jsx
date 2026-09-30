@@ -56,8 +56,8 @@ export default function SystemSection() {
           className="system-banner fade-in"
           fadeRef={imgFadeRef}
           src={SYSTEM_IMG}
-          alt="World · Moment · Coordinates"
-          label="World · Moment · Coordinates"
+          alt="Explore · Navigate · Launch"
+          label="Explore · Navigate · Launch"
         />
 
         <div className="system-grid fade-in" ref={gridFadeRef}>

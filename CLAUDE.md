@@ -28,7 +28,7 @@ GitHub: https://github.com/jaeemin05/PIONEER
 7. `Shop` + `ShopCarousel` — 제품 라인업: **Signal**(기성) / **Origin**(커스텀, 세션 모달 유도). 모바일 폭에서는 무한루프 스와이퍼로 전환(로드 시 1회만 판정, 리사이즈 반응 없음 — 원본 그대로 유지한 의도된 갭)
 8. `Experience` — Navigator 세션 진행 방식(Stop → Talk → Receive)
 9. `Destination` — CTA 섹션
-10. `SystemSection` — World · Moment · Coordinates
+10. `SystemSection` — Explore · Navigate · Launch
 11. `Footer` + `SessionModal`/`SessionModalContext` — 세션 신청 모달, 4곳(Header/Shop/Destination/Footer)에서 Context로 트리거
 
 ## 이미지 (public/, 섹션별 하위 폴더로 정리됨)
