@@ -3,7 +3,7 @@
 ## 프로젝트
 **PIONEER** — "Go. Lightly." 슬로건의 커스텀 폰케이스("The Plaque") 브랜드 랜딩 페이지.
 1972년 파이오니어 10호 탐사선과 그 금속판(Pioneer Plaque)에서 모티프를 가져온 컨셉으로, 고객의 세계관을 담은 케이스를 판매한다.
-라이브(Next.js 버전): https://pioneer-iota-five.vercel.app/ (Vercel 프로젝트: `odd3/pioneer`)
+라이브(Next.js 버전): https://pioneerhq.vercel.app/ (Vercel 프로젝트: `odd3/pioneer`, 기존 https://pioneer-iota-five.vercel.app/ 도 같은 프로젝트를 가리키며 계속 동작함)
 GitHub: https://github.com/jaeemin05/PIONEER
 참고 — https://pioneerstation.vercel.app/ 는 마이그레이션 이전의 구버전 정적 사이트가 올라가 있던 별개의 Vercel 계정/프로젝트로, 이 리포에서는 접근 불가(이번 Next.js 버전과 무관).
 
