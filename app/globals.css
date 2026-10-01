@@ -10,9 +10,16 @@
             --mono: 'Space Mono', monospace;
             --text-dim: rgba(255,255,255,0.58); /* navy 배경 대비 5.3:1 — WCAG AA(4.5:1) 통과 */
             --warn: #FF6B4A; /* 폼 필수 입력 경고 전용 색상 — green/pink와 의미 충돌 방지 */
+            --ease-out: cubic-bezier(0.23, 1, 0.32, 1); /* 등장/퇴장용 강한 ease-out */
+            --ease-pop: cubic-bezier(0.22, 1, 0.36, 1); /* 모달/팝업 팝인용 곡선 */
         }
 
         html { scroll-behavior: smooth; }
+
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            .scroll-line, .event-popup-tag::after { animation: none; }
+        }
 
         body {
             font-family: 'Noto Sans KR', 'Space Grotesk', sans-serif;
@@ -88,9 +95,10 @@
             color: var(--white) !important;
             padding: 11px 22px;
             opacity: 1 !important;
-            transition: opacity 0.2s !important;
+            transition: opacity 0.2s, transform 0.12s var(--ease-out) !important;
         }
         .nav-cta:hover { opacity: 0.8 !important; }
+        .nav-cta:active { transform: scale(0.97) !important; }
 
 
         /* HERO */
@@ -417,13 +425,14 @@
             width: 36px;
             height: 36px;
             cursor: pointer;
-            transition: border-color 0.2s, color 0.2s;
+            transition: border-color 0.2s, color 0.2s, transform 0.12s var(--ease-out);
             display: flex;
             align-items: center;
             justify-content: center;
             line-height: 1;
         }
         .slider-btn:hover { border-color: var(--green); color: var(--green); }
+        .slider-btn:active { transform: scale(0.96); }
         .slider-btn:disabled { opacity: 0.2; cursor: default; }
 
         .slider-track-wrap {
@@ -657,9 +666,10 @@
             text-transform: uppercase;
             padding: 14px 24px;
             text-decoration: none;
-            transition: background 0.2s, color 0.2s;
+            transition: background 0.2s, color 0.2s, transform 0.12s var(--ease-out);
         }
         .btn-filled:hover { background: var(--green); color: var(--navy); }
+        .btn-filled:active { transform: scale(0.97); }
         .btn-outline {
             display: inline-block;
             border: 1px solid rgba(255,255,255,0.25);
@@ -670,8 +680,9 @@
             text-transform: uppercase;
             padding: 14px 24px;
             text-decoration: none;
-            transition: background 0.2s, color 0.2s;
+            transition: background 0.2s, color 0.2s, transform 0.12s var(--ease-out);
         }
+        .btn-outline:active { transform: scale(0.97); }
         .btn-outline:hover { background: var(--white); color: var(--navy); }
 
 
@@ -772,7 +783,7 @@
             max-width: 380px;
             padding: 40px 32px 32px;
             text-align: center;
-            animation: event-popup-in 0.5s cubic-bezier(0.22,1,0.36,1) both;
+            animation: event-popup-in 0.5s var(--ease-pop) both;
         }
         @keyframes event-popup-in {
             from { opacity: 0; transform: scale(0.92) translateY(14px); }
@@ -792,6 +803,7 @@
         .event-popup-close:hover { color: var(--white); }
         .event-popup-tag {
             display: inline-block;
+            position: relative;
             background: var(--green);
             color: var(--navy);
             font-family: var(--mono);
@@ -800,11 +812,18 @@
             letter-spacing: 0.2em;
             padding: 5px 12px;
             margin-bottom: 20px;
-            animation: event-popup-pulse 1.8s ease-in-out infinite;
+        }
+        .event-popup-tag::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border: 1.5px solid var(--green);
+            pointer-events: none;
+            animation: event-popup-pulse 1.8s ease-out infinite;
         }
         @keyframes event-popup-pulse {
-            0%, 100% { box-shadow: 0 0 0 0 rgba(180,255,0,0.5); }
-            50% { box-shadow: 0 0 0 6px rgba(180,255,0,0); }
+            0% { transform: scale(1); opacity: 0.6; }
+            100% { transform: scale(1.4); opacity: 0; }
         }
         .event-popup-title {
             font-family: 'Space Grotesk', sans-serif;
@@ -876,7 +895,7 @@
             overflow-y: auto;
             padding: 56px 48px;
             position: relative;
-            animation: modal-in 0.35s cubic-bezier(0.22,1,0.36,1) both;
+            animation: modal-in 0.35s var(--ease-pop) both;
         }
         @keyframes modal-in {
             from { opacity: 0; transform: translateY(24px); }
@@ -972,10 +991,11 @@
             letter-spacing: 0.25em;
             text-transform: uppercase;
             cursor: pointer;
-            transition: background 0.2s;
+            transition: background 0.2s, transform 0.12s var(--ease-out);
             width: 100%;
         }
         .modal-submit:hover { background: var(--green); color: var(--navy); }
+        .modal-submit:active { transform: scale(0.98); }
 
         /* 제출 완료 상태 */
         .modal-success {
@@ -983,7 +1003,14 @@
             text-align: center;
             padding: 24px 0;
         }
-        .modal-success.show { display: block; }
+        .modal-success.show {
+            display: block;
+            animation: modal-success-in 0.4s var(--ease-out) both;
+        }
+        @keyframes modal-success-in {
+            from { opacity: 0; transform: translateY(10px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
         .success-icon {
             font-size: 40px;
             margin-bottom: 20px;
@@ -1073,7 +1100,7 @@
         .fade-in {
             opacity: 0;
             transform: translateY(20px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
+            transition: opacity 0.8s var(--ease-out), transform 0.8s var(--ease-out);
         }
         .fade-in.visible { opacity: 1; transform: translateY(0); }
 
@@ -1135,7 +1162,7 @@
            어두운 배경 가운데에 480px 카드가 그림자와 함께 떠 있고, 실제 폰
            화면(≤480px)에서는 카드가 화면 전체를 그대로 채움. */
         #event-page {
-            background: #000;
+            background: radial-gradient(ellipse 70% 55% at 50% 35%, #0a0d16 0%, #030408 55%, #000 100%);
             min-height: 100vh;
             display: flex;
             justify-content: center;
@@ -1496,9 +1523,13 @@
             color: var(--white);
             transform: scale(1.06);
         }
+        .event-chip:active { transform: scale(0.95); }
+        /* 칩 3개 선택 후 나오는 매칭 결과 — 이 페이지에서 유일한 '발견의 순간'이라
+           단순 페이드 대신 살짝 튀어오르는 느낌을 줌(스프링 근사) */
         @keyframes eventMatchIn {
-            from { opacity: 0; transform: translateY(8px); }
-            to { opacity: 1; transform: translateY(0); }
+            0% { opacity: 0; transform: translateY(8px) scale(0.94); }
+            70% { opacity: 1; transform: translateY(0) scale(1.015); }
+            100% { opacity: 1; transform: translateY(0) scale(1); }
         }
         .event-match-preview {
             font-size: 13px;
@@ -1508,7 +1539,7 @@
             border: 1px solid rgba(180,255,0,0.25);
             background: rgba(180,255,0,0.04);
             margin-bottom: 20px;
-            animation: eventMatchIn 0.35s ease;
+            animation: eventMatchIn 0.45s var(--ease-out);
         }
         .event-match-hit { color: var(--gray); font-size: 11px; }
         .event-error { font-size: 12px; color: var(--warn); margin-top: 4px; }
@@ -1597,7 +1628,7 @@
             background: rgba(2,6,15,0.92);
             border-top: 1px solid rgba(255,255,255,0.08);
             transform: translate(-50%, 100%);
-            transition: transform 0.3s ease;
+            transition: transform 0.3s var(--ease-out);
         }
         .event-sticky-cta.show { transform: translate(-50%, 0); }
         .event-sticky-cta .btn-filled {
