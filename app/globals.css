@@ -1128,3 +1128,381 @@
         @media (max-width: 480px) {
             .system-grid { grid-template-columns: 1fr; }
         }
+
+
+        /* ==================== EVENT PAGE ==================== */
+        /* oddNC 참고 — 항상 모바일(폰) 폭 카드 하나로 보여줌. 데스크톱에서는
+           어두운 배경 가운데에 480px 카드가 그림자와 함께 떠 있고, 실제 폰
+           화면(≤480px)에서는 카드가 화면 전체를 그대로 채움. */
+        #event-page {
+            background: #000;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+        }
+        .event-app {
+            width: 100%;
+            max-width: 480px;
+            min-height: 100vh;
+            background: var(--navy);
+            position: relative;
+            overflow-x: hidden;
+            box-shadow: 0 0 60px rgba(0,0,0,0.5);
+        }
+        .event-app .section { padding: 64px 24px; }
+        .event-app .section-inner { max-width: none; }
+
+        .event-h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(28px,4vw,48px);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 16px;
+            line-height: 1.3;
+        }
+        .event-sub-copy {
+            font-size: 15px;
+            color: var(--text-dim);
+            line-height: 1.8;
+            max-width: 480px;
+            margin-bottom: 40px;
+        }
+
+        /* HERO */
+        #event-hero {
+            padding: 88px 24px 72px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .event-logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 20px;
+            letter-spacing: -0.02em;
+            color: var(--white);
+            text-decoration: none;
+        }
+        .event-tag {
+            font-family: var(--mono);
+            font-size: 10px;
+            letter-spacing: 0.24em;
+            text-transform: uppercase;
+            color: var(--green);
+            margin-top: 14px;
+        }
+        .event-h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(30px,6vw,52px);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            line-height: 1.3;
+            margin-top: 28px;
+        }
+        .event-sub {
+            font-size: 15px;
+            color: var(--text-dim);
+            line-height: 1.8;
+            margin-top: 20px;
+            max-width: 420px;
+        }
+        .event-promo-card {
+            margin-top: 40px;
+            padding: 32px 28px;
+            border: 1px solid rgba(255,255,255,0.12);
+            background: rgba(255,255,255,0.03);
+            max-width: 380px;
+            width: 100%;
+        }
+        .event-promo-headline {
+            font-family: var(--mono);
+            font-size: 10px;
+            letter-spacing: 0.24em;
+            text-transform: uppercase;
+            color: var(--pink);
+            margin-bottom: 14px;
+        }
+        .event-promo-cond {
+            font-size: 14px;
+            color: var(--white);
+            line-height: 1.7;
+            margin-bottom: 24px;
+        }
+
+        /* CONCEPT */
+        .event-quote {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 18px;
+            font-style: italic;
+            color: var(--green);
+            margin-bottom: 24px;
+        }
+        .event-body {
+            font-size: 15px;
+            color: var(--text-dim);
+            line-height: 1.85;
+            max-width: 520px;
+            margin-bottom: 20px;
+        }
+        .event-concept-img {
+            margin-top: 40px;
+            aspect-ratio: 1 / 2;
+            max-width: 260px;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+        .event-concept-img img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        /* CASE */
+        .event-case-card {
+            border: 1px solid rgba(255,255,255,0.07);
+            padding: 32px 28px;
+            margin-bottom: 16px;
+        }
+        .event-case-card p { font-size: 14px; color: var(--text-dim); line-height: 1.8; margin-bottom: 14px; }
+        .event-case-tag {
+            font-family: var(--mono);
+            font-size: 9px;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--pink);
+            margin-bottom: 16px;
+        }
+        .event-case-result {
+            font-size: 13px;
+            color: var(--green);
+            line-height: 1.7;
+        }
+
+        /* MID CTA */
+        .event-mid-cta-inner {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 28px;
+        }
+        .event-mid-cta-inner p { font-size: 18px; line-height: 1.6; }
+
+        /* GALLERY */
+        .event-gallery-scroll {
+            display: flex;
+            gap: 12px;
+            overflow-x: auto;
+            padding: 0 24px 8px;
+            scrollbar-width: none;
+            scroll-snap-type: x mandatory;
+        }
+        .event-gallery-scroll::-webkit-scrollbar { display: none; }
+        .event-gallery-img {
+            flex: 0 0 220px;
+            height: 280px;
+            object-fit: cover;
+            border: 1px solid rgba(255,255,255,0.08);
+            scroll-snap-align: center;
+            transition: transform 0.25s ease, border-color 0.25s ease;
+        }
+        .event-gallery-img:hover { transform: scale(1.04); border-color: rgba(180,255,0,0.35); }
+
+        /* REVIEWS */
+        .event-reviews-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+        }
+        .event-review-img { aspect-ratio: 3 / 4; }
+
+        /* FAQ */
+        .event-qa-item { border-bottom: 1px solid rgba(255,255,255,0.08); }
+        .event-qa-q {
+            width: 100%;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 24px 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-family: 'Noto Sans KR', sans-serif;
+            font-size: 15px;
+            color: var(--white);
+            text-align: left;
+        }
+        .event-qa-plus {
+            font-size: 18px;
+            color: var(--green);
+            transition: transform 0.2s ease;
+            flex: none;
+            margin-left: 16px;
+        }
+        .event-qa-q:hover .event-qa-plus { color: var(--pink); }
+        .event-qa-item.open .event-qa-plus { transform: rotate(45deg); }
+        .event-qa-a {
+            display: grid;
+            grid-template-rows: 0fr;
+            transition: grid-template-rows 0.3s ease;
+        }
+        .event-qa-item.open .event-qa-a { grid-template-rows: 1fr; }
+        .event-qa-a-inner {
+            overflow: hidden;
+            font-size: 14px;
+            color: var(--text-dim);
+            line-height: 1.8;
+            padding-bottom: 24px;
+        }
+
+        /* APPLY FORM */
+        .event-apply-inner { max-width: 560px; }
+        .event-promo-line {
+            font-size: 13px;
+            color: var(--pink);
+            line-height: 1.7;
+            margin-bottom: 32px;
+        }
+        .event-mini-note {
+            font-size: 11px;
+            color: var(--gray);
+            line-height: 1.6;
+        }
+        .event-chip-counter {
+            font-family: var(--mono);
+            font-size: 10px;
+            letter-spacing: 0.1em;
+            color: var(--green);
+            margin: 10px 0;
+        }
+        .event-chip-wrap {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 16px;
+        }
+        .event-chip {
+            font-family: 'Noto Sans KR', sans-serif;
+            font-size: 12.5px;
+            padding: 8px 14px;
+            border: 1px solid rgba(255,255,255,0.15);
+            background: transparent;
+            color: var(--text-dim);
+            border-radius: 100px;
+            cursor: pointer;
+            transition: background 0.15s, border-color 0.15s, color 0.15s, transform 0.15s;
+        }
+        .event-chip:hover { border-color: rgba(255,255,255,0.35); }
+        .event-chip.active {
+            background: var(--pink);
+            border-color: var(--pink);
+            color: var(--white);
+            transform: scale(1.06);
+        }
+        @keyframes eventMatchIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .event-match-preview {
+            font-size: 13px;
+            color: var(--white);
+            line-height: 1.8;
+            padding: 20px;
+            border: 1px solid rgba(180,255,0,0.25);
+            background: rgba(180,255,0,0.04);
+            margin-bottom: 20px;
+            animation: eventMatchIn 0.35s ease;
+        }
+        .event-match-hit { color: var(--gray); font-size: 11px; }
+        .event-error { font-size: 12px; color: var(--warn); margin-top: 4px; }
+        .event-agree {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: 13px;
+            color: var(--text-dim);
+            cursor: pointer;
+        }
+        .event-agree input { margin-top: 3px; }
+
+        /* FOOTER */
+        #event-footer { padding: 64px 24px; text-align: center; }
+        .event-footer-logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 18px;
+            color: var(--white);
+            text-decoration: none;
+        }
+        .event-footer-tag { font-size: 12px; color: var(--gray); margin-top: 8px; }
+        .event-footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 24px;
+            flex-wrap: wrap;
+        }
+        .event-footer-links a {
+            font-family: var(--mono);
+            font-size: 10px;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--text-dim);
+            text-decoration: none;
+        }
+        .event-footer-links a:hover { color: var(--green); }
+
+        /* CTA 강조 — .btn-filled는 사이트 전역 클래스라 건드리지 않고,
+           이 페이지의 CTA 버튼에만 붙는 .event-cta에 숨쉬는 스케일 +
+           대각선 광택 애니메이션을 추가해서 시선을 끌게 함. */
+        @keyframes eventCtaBreath {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.025); }
+        }
+        @keyframes eventCtaShine {
+            0% { transform: translateX(-120%) skewX(-18deg); }
+            60%, 100% { transform: translateX(220%) skewX(-18deg); }
+        }
+        .event-cta {
+            position: relative;
+            overflow: hidden;
+            animation: eventCtaBreath 2.6s ease-in-out infinite;
+        }
+        .event-cta::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 40%;
+            height: 100%;
+            background: linear-gradient(120deg, transparent, rgba(255,255,255,0.35), transparent);
+            animation: eventCtaShine 3.2s ease-in-out infinite;
+        }
+        .event-cta:hover { animation-play-state: paused; }
+
+        /* STICKY CTA — 카드(.event-app)와 같은 480px 폭으로 가운데 정렬 */
+        .event-sticky-cta {
+            position: fixed;
+            left: 50%;
+            bottom: 0;
+            width: 100%;
+            max-width: 480px;
+            box-sizing: border-box;
+            z-index: 90;
+            padding: 14px 24px;
+            background: rgba(2,6,15,0.92);
+            border-top: 1px solid rgba(255,255,255,0.08);
+            transform: translate(-50%, 100%);
+            transition: transform 0.3s ease;
+        }
+        .event-sticky-cta.show { transform: translate(-50%, 0); }
+        .event-sticky-cta .btn-filled {
+            display: block;
+            text-align: center;
+        }
+
