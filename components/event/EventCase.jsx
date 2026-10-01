@@ -20,7 +20,7 @@ const CASES = [
 function CaseCard({ c }) {
   const fadeRef = useFadeIn();
   return (
-    <div className="event-case-card fade-in" ref={fadeRef}>
+    <div className="event-case-card event-coord-frame fade-in" ref={fadeRef}>
       <div className="event-case-tag">{c.tag}</div>
       <p>{c.story}</p>
       <div className="event-case-result">{c.result}</div>

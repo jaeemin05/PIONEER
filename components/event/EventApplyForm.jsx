@@ -54,7 +54,7 @@ export default function EventApplyForm() {
   const handleSubmit = (e) => {
     e.preventDefault();
     const nextErrors = {};
-    if (active.length < 3) nextErrors.words = '나의 행성 찾기 — 단어를 3개 이상 골라주세요.';
+    if (active.length < 3) nextErrors.words = '나의 행성 찾기: 단어를 3개 이상 골라주세요.';
     if (!name.trim()) nextErrors.name = true;
     if (!contact.trim()) nextErrors.contact = true;
     if (!agree) nextErrors.agree = true;
@@ -115,9 +115,9 @@ export default function EventApplyForm() {
         <h2 className="modal-title">오픈 기념 이벤트 신청하기</h2>
         <p className="modal-sub">아래 정보를 남겨주시면 확인 후 연락드립니다.</p>
         <p className="event-promo-line">
-          PIONEER 오픈 기념 이벤트 — Origin 세션을 특별한 조건으로 만나보세요
+          PIONEER 오픈 기념 이벤트 · Origin 세션을 특별한 조건으로 만나보세요
           <br />
-          (예시 문구 — 실제 이벤트 내용으로 교체 필요)
+          (예시 문구 · 실제 이벤트 내용으로 교체 필요)
         </p>
 
         <form className="modal-form" onSubmit={handleSubmit} noValidate>

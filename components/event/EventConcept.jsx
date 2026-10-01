@@ -18,12 +18,14 @@ export default function EventConcept() {
             읽어내, 당신만의 좌표를 가진 PLANET으로 옮겨 담습니다.
           </p>
           <p className="event-body">
-            당신이 좋아하는 것, 마음이 머무는 순간, 스스로도 잘 몰랐던 취향까지 — Navigator와의 대화를
+            당신이 좋아하는 것, 마음이 머무는 순간, 스스로도 잘 몰랐던 취향까지, Navigator와의 대화를
             통해 모으고, 그것을 하나의 디자인으로 연결합니다.
           </p>
         </div>
-        <div className="event-concept-img fade-in" ref={imgFadeRef}>
-          <img src="/plaque-reveal/origin-plaque-mockup.png" alt="PIONEER Origin PLANET 목업" />
+        <div className="event-concept-visual fade-in" ref={imgFadeRef}>
+          <div className="event-concept-img">
+            <img src="/plaque-reveal/origin-plaque-mockup.png" alt="PIONEER Origin PLANET 목업" />
+          </div>
         </div>
       </div>
     </section>
