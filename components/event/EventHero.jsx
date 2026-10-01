@@ -1,12 +1,14 @@
 'use client';
 
 import { useFadeIn } from '@/hooks/useFadeIn';
+import EventShaderBackground from './EventShaderBackground';
 
 export default function EventHero() {
   const fadeRef = useFadeIn();
 
   return (
     <section id="event-hero">
+      <EventShaderBackground />
       <a href="/" className="event-logo">PIONEER</a>
       <div className="event-tag">Origin Session Preview</div>
       <h1 className="event-h1">

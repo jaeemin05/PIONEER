@@ -1,4 +1,5 @@
 import Hero3D from './Hero3D';
+import HeroShaderBackground from './HeroShaderBackground';
 
 export default function Hero() {
   return (
@@ -17,6 +18,9 @@ export default function Hero() {
           backgroundPosition: 'center',
         }}
       />
+      {/* /event에서 써본 셰이더 그라데이션을 메인 히어로에도 시험 적용 —
+          사진 위에 낮은 투명도로 얹어서 은은하게 움직이는 색감만 더함 */}
+      <HeroShaderBackground />
       <Hero3D />
       <div
         style={{
