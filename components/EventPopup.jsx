@@ -1,14 +1,12 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { useSessionModal } from './SessionModalContext';
 
 const DISMISS_KEY = 'pioneer-event-popup-dismissed';
 const SHOW_DELAY = 1000;
 
 export default function EventPopup() {
   const [visible, setVisible] = useState(false);
-  const { open } = useSessionModal();
 
   useEffect(() => {
     const today = new Date().toDateString();
@@ -35,11 +33,6 @@ export default function EventPopup() {
     setVisible(false);
   };
 
-  const handleCta = () => {
-    setVisible(false);
-    open();
-  };
-
   if (!visible) return null;
 
   return (
@@ -47,13 +40,14 @@ export default function EventPopup() {
       <div className="event-popup-card">
         <button className="event-popup-close" onClick={close} aria-label="닫기">✕</button>
         <span className="event-popup-tag">EVENT</span>
-        <h3 className="event-popup-title">오픈 기념 이벤트</h3>
+        <h3 className="event-popup-title">OPEN EVENT</h3>
+        <p className="event-popup-eligibility">서울·경기 거주 20대 한정!</p>
         <p className="event-popup-desc">
-          선착순 30명 · Origin 세션 10% 할인
+          나의 우주를 담은 폰케이스를 디자인해드려요!
           <br />
-          (예시 문구 — 실제 이벤트 내용으로 교체 필요)
+          선착순 30명 · 커스텀 <span style={{ color: 'var(--green)' }}>폰케이스</span> 제작 무료 이벤트
         </p>
-        <button className="event-popup-cta" onClick={handleCta}>지금 신청하기 →</button>
+        <a className="event-popup-cta" href="/event">지금 신청하기 →</a>
         <button className="event-popup-dismiss" onClick={dismissToday}>오늘 하루 보지 않기</button>
       </div>
     </div>
