@@ -672,6 +672,7 @@
         .btn-filled:active { transform: scale(0.97); }
         .btn-outline {
             display: inline-block;
+            background: none;
             border: 1px solid rgba(255,255,255,0.25);
             color: var(--white);
             font-family: var(--mono);
@@ -680,6 +681,7 @@
             text-transform: uppercase;
             padding: 14px 24px;
             text-decoration: none;
+            cursor: pointer;
             transition: background 0.2s, color 0.2s, transform 0.12s var(--ease-out);
         }
         .btn-outline:active { transform: scale(0.97); }
@@ -1689,3 +1691,80 @@
             text-align: center;
         }
 
+
+        /* ==================== ADMIN ==================== */
+        .admin-gate {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--navy);
+            padding: 24px;
+        }
+        .admin-gate-form {
+            width: 100%;
+            max-width: 320px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .admin-gate-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 20px;
+            text-align: center;
+            margin-bottom: 8px;
+        }
+        .admin-error {
+            color: var(--warn);
+            font-size: 13px;
+            text-align: center;
+        }
+        .admin-page {
+            min-height: 100vh;
+            background: var(--navy);
+            padding: 48px 32px;
+        }
+        .admin-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+        .admin-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 22px;
+            font-weight: 700;
+        }
+        .admin-empty {
+            color: var(--gray);
+            font-size: 14px;
+        }
+        .admin-table-wrap {
+            overflow-x: auto;
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+        .admin-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+            white-space: nowrap;
+        }
+        .admin-table th,
+        .admin-table td {
+            padding: 12px 16px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+        .admin-table th {
+            font-family: var(--mono);
+            font-size: 10px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--green);
+            background: rgba(255,255,255,0.02);
+        }
+        .admin-table td { color: var(--text-dim); }
+        .admin-table tbody tr:hover { background: rgba(255,255,255,0.03); }
