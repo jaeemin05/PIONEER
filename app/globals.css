@@ -1490,13 +1490,13 @@
             margin-left: 16px;
         }
         .event-qa-q:hover .event-qa-plus { color: var(--pink); }
-        .event-qa-item.open .event-qa-plus { transform: rotate(45deg); }
+        .event-qa-item[data-open="true"] .event-qa-plus { transform: rotate(45deg); }
         .event-qa-a {
             display: grid;
             grid-template-rows: 0fr;
             transition: grid-template-rows 0.3s ease;
         }
-        .event-qa-item.open .event-qa-a { grid-template-rows: 1fr; }
+        .event-qa-item[data-open="true"] .event-qa-a { grid-template-rows: 1fr; }
         .event-qa-a-inner {
             overflow: hidden;
             font-size: 14px;

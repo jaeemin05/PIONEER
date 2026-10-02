@@ -21,7 +21,7 @@ const FAQS = [
 function FaqItem({ item, isOpen, onToggle }) {
   const fadeRef = useFadeIn();
   return (
-    <div className={`event-qa-item fade-in${isOpen ? ' open' : ''}`} ref={fadeRef}>
+    <div className="event-qa-item fade-in" data-open={isOpen || undefined} ref={fadeRef}>
       <button type="button" className="event-qa-q" onClick={onToggle}>
         <span>{item.q}</span>
         <span className="event-qa-plus">+</span>
