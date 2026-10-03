@@ -1995,6 +1995,31 @@
         @media (prefers-reduced-motion: reduce) {
             .event-sheet-overlay, .event-sheet { animation: none; }
         }
+        /* 신청 팝업 본문 — 흰색 + 선명하게 (액센트 색 라벨은 유지) */
+        .event-sheet .modal-sub,
+        .event-sheet .modal-note,
+        .event-sheet .form-label,
+        .event-sheet .event-mini-note,
+        .event-sheet .event-match-hit,
+        .event-sheet .event-agree,
+        .event-sheet .event-consent,
+        .event-sheet .event-consent-list dd {
+            color: var(--white);
+            font-weight: 500;
+            text-shadow: none;
+        }
+        /* 신청 팝업 글씨 크기 확대 */
+        .event-sheet .modal-eyebrow { font-size: 11px; }
+        .event-sheet .modal-sub { font-size: 16px; }
+        .event-sheet .modal-note,
+        .event-sheet .event-mini-note,
+        .event-sheet .event-match-hit { font-size: 13px; }
+        .event-sheet .form-label { font-size: 15px; }
+        .event-sheet .event-agree { font-size: 15px; }
+        .event-sheet .event-chip { font-size: 14px; }
+        .event-sheet .event-consent { font-size: 14px; }
+        .event-sheet .event-consent-title { font-size: 15px; }
+        .event-sheet .event-consent-list dt { font-size: 12px; }
         .event-agree-note {
             display: inline-block;
             margin-top: 6px;
