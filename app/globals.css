@@ -1011,6 +1011,13 @@
         }
         .modal-submit:hover { background: var(--green); color: var(--navy); }
         .modal-submit:active { transform: scale(0.98); }
+        .event-apply-body .modal-submit {
+            background: #1f4fbf;
+            border-color: transparent;
+            color: var(--white);
+            font-weight: 700;
+        }
+        .event-apply-body .modal-submit:hover { background: #3b6fe0; color: var(--white); }
 
         /* 제출 완료 상태 */
         .modal-success {
@@ -1563,6 +1570,7 @@
             color: var(--text-dim);
             line-height: 1.8;
             padding-bottom: 24px;
+            white-space: pre-line;
         }
 
         /* APPLY FORM */
@@ -1680,8 +1688,8 @@
         .event-cta {
             position: relative;
             overflow: hidden;
-            background: var(--pink);
-            color: var(--navy);
+            background: #1f4fbf;
+            color: var(--white);
             font-weight: 700;
             padding: 16px 28px;
             display: block;
@@ -1701,6 +1709,7 @@
             animation: eventCtaShine 3.2s ease-in-out infinite;
         }
         .event-cta:hover { animation-play-state: paused; }
+        .event-cta:hover { background: #3b6fe0; color: var(--white); }
 
         @media (prefers-reduced-motion: reduce) {
             .event-cta, .event-cta::after { animation: none; }
