@@ -5,9 +5,10 @@ import EventMidCta from '@/components/event/EventMidCta';
 import EventGallery from '@/components/event/EventGallery';
 import EventReviews from '@/components/event/EventReviews';
 import EventFaq from '@/components/event/EventFaq';
-import EventApplyForm from '@/components/event/EventApplyForm';
 import EventFooter from '@/components/event/EventFooter';
 import EventStickyCta from '@/components/event/EventStickyCta';
+import EventSheet from '@/components/event/EventApplySheet';
+import { EventApplyProvider } from '@/components/event/EventApplyContext';
 
 export const metadata = {
   title: 'PIONEER — 오픈 기념 이벤트',
@@ -15,19 +16,21 @@ export const metadata = {
 
 export default function EventPage() {
   return (
-    <div id="event-page">
-      <div className="event-app">
-        <EventHero />
-        <EventConcept />
-        <EventCase />
-        <EventMidCta />
-        <EventGallery />
-        <EventReviews />
-        <EventFaq />
-        <EventApplyForm />
-        <EventFooter />
+    <EventApplyProvider>
+      <div id="event-page">
+        <div className="event-app">
+          <EventHero />
+          <EventConcept />
+          <EventCase />
+          <EventMidCta />
+          <EventGallery />
+          <EventReviews />
+          <EventFaq />
+          <EventFooter />
+        </div>
+        <EventStickyCta />
+        <EventSheet />
       </div>
-      <EventStickyCta />
-    </div>
+    </EventApplyProvider>
   );
 }

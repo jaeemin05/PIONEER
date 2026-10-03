@@ -2,9 +2,11 @@
 
 import { useFadeIn } from "@/hooks/useFadeIn";
 import EventShaderBackground from "./EventShaderBackground";
+import { useEventApply } from "./EventApplyContext";
 
 export default function EventHero() {
   const fadeRef = useFadeIn();
+  const { open } = useEventApply();
 
   return (
     <section id="event-hero">
@@ -32,9 +34,9 @@ export default function EventHero() {
           <br />
           선착순 30명 · 커스텀 <span style={{ color: "var(--green)" }}>폰케이스</span> 제작 무료 이벤트
         </div>
-        <a href="#event-apply" className="btn-filled event-cta">
+        <button type="button" className="btn-filled event-cta" onClick={open}>
           지금 참여하기 →
-        </a>
+        </button>
       </div>
     </section>
   );

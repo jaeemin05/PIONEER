@@ -1,9 +1,12 @@
 'use client';
 
+import { useEventApply } from './EventApplyContext';
+
 import { useEffect, useRef, useState } from 'react';
 
 export default function EventStickyCta() {
   const [visible, setVisible] = useState(false);
+  const { open } = useEventApply();
   const ticking = useRef(false);
 
   // 스크롤 이벤트는 한 번 제스처에도 연속으로 여러 번 발생해서, 매번 바로
@@ -24,7 +27,7 @@ export default function EventStickyCta() {
 
   return (
     <div className={`event-sticky-cta${visible ? ' show' : ''}`}>
-      <a href="#event-apply" className="btn-filled event-cta">지금 참여하기 →</a>
+      <button type="button" className="btn-filled event-cta" onClick={open}>지금 참여하기 →</button>
     </div>
   );
 }

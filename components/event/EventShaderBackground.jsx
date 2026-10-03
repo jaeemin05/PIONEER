@@ -13,15 +13,15 @@ export default function EventShaderBackground() {
       <ShaderGradient
         control="props"
         type="waterPlane"
-        animate="on"
+        animate="off"
         uSpeed={0.1}
         uStrength={0.8}
         uDensity={0.6}
         uFrequency={3}
         color1="#02060F"
-        color2="#0c2e1a"
-        color3="#2a0b1c"
-        brightness={0.25}
+        color2="#0c1e36"
+        color3="#1a1433"
+        brightness={0.4}
         grain="off"
         cDistance={4.2}
         cAzimuthAngle={180}

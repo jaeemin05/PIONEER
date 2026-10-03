@@ -1,9 +1,12 @@
 'use client';
 
+import { useEventApply } from './EventApplyContext';
+
 import { useFadeIn } from '@/hooks/useFadeIn';
 
 export default function EventMidCta() {
   const fadeRef = useFadeIn();
+  const { open } = useEventApply();
 
   return (
     <section id="event-mid-cta" className="section section-dark">
@@ -13,7 +16,7 @@ export default function EventMidCta() {
           <br />
           오픈 기념으로 Origin 세션 신청을 받고 있어요.
         </p>
-        <a href="#event-apply" className="btn-filled event-cta">지금 참여하기 →</a>
+        <button type="button" className="btn-filled event-cta" onClick={open}>지금 참여하기 →</button>
       </div>
     </section>
   );
