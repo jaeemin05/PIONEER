@@ -1467,6 +1467,8 @@
             margin-bottom: 16px;
         }
         .event-case-card p { font-size: 16px; color: rgba(255,255,255,0.82); line-height: 1.8; margin-bottom: 14px; }
+        .event-case-card p,
+        .event-case-result { white-space: pre-line; }
         .event-case-tag {
             font-family: var(--mono);
             font-size: 11px;
