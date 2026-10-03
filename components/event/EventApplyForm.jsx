@@ -99,6 +99,7 @@ export default function EventApplyForm() {
   const [region, setRegion] = useState("");
   const [contact, setContact] = useState("");
   const [agree, setAgree] = useState(false);
+  const [consentOpen, setConsentOpen] = useState(false);
   const [errors, setErrors] = useState({});
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
@@ -271,7 +272,7 @@ export default function EventApplyForm() {
 
           <div className="form-group">
             <label className="form-label" htmlFor="event-birth-year">
-              몇년생
+              나이
             </label>
             <EventSelect
               id="event-birth-year"
@@ -343,6 +344,16 @@ export default function EventApplyForm() {
               )}
             </span>
           </label>
+          <button
+            type="button"
+            className="event-consent-toggle"
+            aria-expanded={consentOpen}
+            onClick={() => setConsentOpen((o) => !o)}
+          >
+            개인정보 수집·이용 동의서 {consentOpen ? "접기" : "펼쳐보기"}
+            <span className="event-consent-chevron" data-open={consentOpen || undefined}>▾</span>
+          </button>
+          {consentOpen && (
           <div className="event-consent">
             <h4 className="event-consent-title">
               개인정보 수집 및 이용 동의서
@@ -368,6 +379,7 @@ export default function EventApplyForm() {
               <dd>이벤트 종료 후 즉시 파기</dd>
             </dl>
           </div>
+          )}
 
           <button className="modal-submit" type="submit" disabled={submitting}>
             {submitting ? "보내는 중..." : "신청하기 →"}

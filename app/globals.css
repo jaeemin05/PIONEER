@@ -1566,7 +1566,7 @@
         .event-qa-item[data-open="true"] .event-qa-a { grid-template-rows: 1fr; }
         .event-qa-a-inner {
             overflow: hidden;
-            font-size: 16px;
+            font-size: 14px;
             color: rgba(255,255,255,0.82);
             line-height: 1.8;
             padding-bottom: 24px;
@@ -2020,6 +2020,25 @@
         .event-sheet .event-consent { font-size: 14px; }
         .event-sheet .event-consent-title { font-size: 15px; }
         .event-sheet .event-consent-list dt { font-size: 12px; }
+        /* 개인정보 동의서 접기/펼치기 */
+        .event-consent-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            margin-top: 4px;
+            padding: 12px 16px;
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.12);
+            color: var(--white);
+            font-family: 'Noto Sans KR', sans-serif;
+            font-size: 14px;
+            font-weight: 500;
+            text-align: left;
+            cursor: pointer;
+        }
+        .event-consent-chevron { transition: transform 0.2s ease; }
+        .event-consent-chevron[data-open="true"] { transform: rotate(180deg); }
         .event-agree-note {
             display: inline-block;
             margin-top: 6px;
