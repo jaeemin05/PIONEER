@@ -188,7 +188,7 @@ export default function EventApplyForm() {
             <div className="success-icon">✦</div>
             <div className="success-title">신청이 접수되었습니다.</div>
             <p className="success-body">
-              Navigator가 2영업일 내로 연락드릴게요.
+              Navigator가 금일 & 익일 내로 연락드릴게요.
               <br />
               그때까지 조금만 기다려 주세요.
             </p>
@@ -207,9 +207,7 @@ export default function EventApplyForm() {
           아래 정보를 남겨주시면 확인 후 기재해주신 연락처로 연락드려요.
         </p>
         <p className="event-promo-line">
-          PIONEER 오픈 기념 이벤트 · Origin 세션을 특별한 조건으로 만나보세요
-          <br />
-          (예시 문구 · 실제 이벤트 내용으로 교체 필요)
+          PIONEER 오픈 기념 이벤트 · 무료로 만나보세요
         </p>
 
         <form className="modal-form" onSubmit={handleSubmit} noValidate>
@@ -336,7 +334,10 @@ export default function EventApplyForm() {
               }}
             />
             <span>
-              개인정보 수집·이용에 동의해요 *
+              개인정보 수집·이용에 동의해요 <br />
+              <em className="event-agree-note">
+                (*이벤트 안내 용도 외에는 사용하지 않습니다.)
+              </em>
               {errors.agree && (
                 <span style={{ color: "var(--warn)" }}> (필수)</span>
               )}

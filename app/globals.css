@@ -1962,3 +1962,12 @@
         @media (prefers-reduced-motion: reduce) {
             .event-sheet-overlay, .event-sheet { animation: none; }
         }
+        .event-agree-note {
+            display: inline-block;
+            margin-top: 6px;
+            font-family: 'Noto Sans KR', sans-serif;
+            font-style: italic;
+            font-size: 11px;
+            letter-spacing: 0.02em;
+            color: var(--green);
+        }
