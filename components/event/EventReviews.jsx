@@ -1,7 +1,12 @@
 'use client';
 
 import { useFadeIn } from '@/hooks/useFadeIn';
-import ImageSlot from '@/components/ImageSlot';
+
+const REVIEW_TILES = [
+  { src: '/shop/origin/org12.png', alt: 'PIONEER Origin PLANET 제작 사례' },
+  { src: '/shop/signal/sig04.png', alt: 'PIONEER Signal PLANET' },
+  { src: '/shop/origin/org01.png', alt: '', blurred: true },
+];
 
 export default function EventReviews() {
   const fadeRef = useFadeIn();
@@ -13,15 +18,18 @@ export default function EventReviews() {
         <h2 className="event-h2">먼저 만나본 사람들</h2>
         <p className="event-sub-copy">당신의 이야기가 하나의 PLANET이 되기까지.</p>
         <div className="event-reviews-grid fade-in" ref={fadeRef}>
-          {[1, 2, 3].map((i) => (
-            <ImageSlot
-              key={i}
-              className="event-review-img"
-              phVariant="ph-dark"
-              label="고객 후기 이미지"
-              subLines={['실제 후기 캡처 예정']}
-            />
-          ))}
+          {REVIEW_TILES.map((tile, i) =>
+            tile.blurred ? (
+              <div key={i} className="event-review-img event-review-teaser">
+                <img src={tile.src} alt="" aria-hidden="true" />
+                <div className="event-review-teaser-text">당신의 행성은?</div>
+              </div>
+            ) : (
+              <div key={i} className="event-review-img">
+                <img src={tile.src} alt={tile.alt} />
+              </div>
+            )
+          )}
         </div>
       </div>
     </section>

@@ -1510,7 +1510,21 @@
             grid-template-columns: 1fr;
             gap: 16px;
         }
-        .event-review-img { aspect-ratio: 3 / 4; }
+        .event-review-img { aspect-ratio: 3 / 4; position: relative; overflow: hidden; }
+        .event-review-img img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+        .event-review-teaser img { filter: blur(14px) brightness(0.55); transform: scale(1.1); }
+        .event-review-teaser-text {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--white);
+            text-shadow: 0 2px 16px rgba(0,0,0,0.6);
+        }
 
         /* FAQ */
         .event-qa-item { border-bottom: 1px solid rgba(255,255,255,0.08); }
@@ -1970,4 +1984,17 @@
             font-size: 11px;
             letter-spacing: 0.02em;
             color: var(--green);
+        }
+        /* 리뷰 이미지: 그리드가 화면에 들어오면(.visible) 칸마다 순서대로 아래에서 열림 */
+        .event-reviews-grid.visible .event-review-img {
+            animation: event-review-reveal 0.9s var(--ease-out) both;
+        }
+        .event-reviews-grid.visible .event-review-img:nth-child(2) { animation-delay: 0.15s; }
+        .event-reviews-grid.visible .event-review-img:nth-child(3) { animation-delay: 0.3s; }
+        @keyframes event-review-reveal {
+            from { clip-path: inset(100% 0 0 0); transform: scale(1.04); }
+            to { clip-path: inset(0 0 0 0); transform: scale(1); }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .event-reviews-grid.visible .event-review-img { animation: none; }
         }

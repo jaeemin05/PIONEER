@@ -186,11 +186,11 @@ export default function EventApplyForm() {
         <div className="section-inner event-apply-inner">
           <div className="modal-success show">
             <div className="success-icon">✦</div>
-            <div className="success-title">신청이 접수되었습니다.</div>
+            <div className="success-title">신청 완료</div>
             <p className="success-body">
-              Navigator가 금일 & 익일 내로 연락드릴게요.
+              Navigator가 기재해주신 연락처로 상세 안내 드릴게요.
               <br />
-              그때까지 조금만 기다려 주세요.
+              감사합니다 <span style={{ color: "var(--green)" }}>♥</span>
             </p>
           </div>
         </div>
