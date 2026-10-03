@@ -22,8 +22,44 @@ export async function POST(request) {
     const url = `${scriptUrl}?action=list&token=${encodeURIComponent(token)}`;
     const res = await fetch(url, { cache: 'no-store' });
     const data = await res.json();
+    if (Array.isArray(data.rows)) data.rows = await withReferrerNames(data.rows);
     return Response.json(data);
   } catch (err) {
     return Response.json({ ok: false, error: err.message }, { status: 502 });
   }
+}
+
+// 시트의 '유입코드'(지역원 추천 코드)를 또치 서버에 물어 '유입자'(이름·지역) 컬럼을 바로 옆에 붙임.
+// 코드→지역원 해석 비밀키는 또치에만 있어서 여기선 서버 간 호출만 함. 실패하면 표는 그대로 보여줌.
+async function withReferrerNames(rows) {
+  const apiUrl = process.env.DDOCHI_API_URL;
+  const key = process.env.PIONEER_INTERNAL_KEY;
+  const codes = [...new Set(rows.map((r) => String(r['유입코드'] || '').trim()).filter((c) => c && c !== 'direct'))];
+  if (!apiUrl || !key || codes.length === 0) return rows;
+
+  let members = {};
+  try {
+    const res = await fetch(`${apiUrl.replace(/\/$/, '')}/api/referral/resolve`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'X-Pioneer-Key': key },
+      body: JSON.stringify({ codes }),
+      cache: 'no-store',
+    });
+    const data = await res.json();
+    if (data.ok) members = data.members || {};
+  } catch {
+    return rows;
+  }
+
+  return rows.map((row) => {
+    const code = String(row['유입코드'] || '').trim();
+    const m = members[code];
+    const label = !code || code === 'direct' ? '' : m ? `${m.name}${m.region ? ` (${m.region}지역)` : ''}` : '알 수 없음';
+    const out = {};
+    for (const [k, v] of Object.entries(row)) {
+      out[k] = v;
+      if (k === '유입코드') out['유입자'] = label;
+    }
+    return out;
+  });
 }
