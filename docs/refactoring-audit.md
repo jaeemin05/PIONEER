@@ -1,6 +1,6 @@
 # PIONEER 코드 검사 및 리팩터링 준비
 
-검사일: 2026-10-04 (Asia/Seoul). 기준 커밋: `14d3e8d2276d8a392156e917fb8c43691060014e`. 작업 브랜치: `refactor/repository-audit`, base: `main`.
+검사일: 2026-10-04 (Asia/Seoul). 기준 커밋: `53366a5ebe471fe67786d2213234334ed639c449`. 작업 브랜치: `refactor/repository-audit`, base: `main`.
 
 이번 변경은 작업 규칙과 검사 결과의 문서화다. 아래 애플리케이션 결함은 아직 수정하지 않았다. 동작을 보존하는 구조 정리와 기능·결함 수정은 별도 PR로 진행한다.
 
@@ -14,7 +14,7 @@
 | 이벤트 | `app/event/page.js`, EventApplyProvider, 신청 Sheet | 유형 매칭·입력 검증·제출·dialog 동작 분리 |
 | 관리자 | `app/admin/page.js`, AdminApplicants, event-applicants API | 조회 계약·인증 상태·응답 검증·표시 분리 |
 | 시각 효과 | 홈 별/셰이더 Canvas 2개, 이벤트 셰이더 Canvas 1개 | 공통 설정과 표시·모션 정책 검토 |
-| 스타일 | `app/globals.css` 2,019행, 전역 및 페이지별 규칙 | cascade 순서를 보존하며 작은 단위로 분리 |
+| 스타일 | `app/globals.css` 2,044행, 전역 및 페이지별 규칙 | cascade 순서를 보존하며 작은 단위로 분리 |
 | 레거시 | `index.html` 1,795행 | 참조용 유지; 현행 화면의 완전한 기준으로 사용하지 않음 |
 
 ## 우선 검토할 문제
@@ -86,7 +86,7 @@ P1은 실제 신청 유실을 숨길 수 있는 동작이다. P2는 오류 처�
 
 | 순서 | 브랜치 예시 | 범위 | 완료 기준 |
 | --- | --- | --- | --- |
-| 1 | `feature/refactor-regression-baseline` | 현행 화면·상호작용·API 계약을 검증하는 기반 | 390/900/1440px, 성공·실패·Escape·Tab·경계 이동、reduced-motion·WebGL/텍스처 실패 검증. 결함 재현은 기대 실패로 구분 |
+| 1 | `feature/refactor-regression-baseline` | 현행 화면·상호작용·API 계약을 검증하는 기반 | 390/900/1440px, 성공·실패·Escape·Tab·경계 이동·reduced-motion·WebGL/텍스처 실패 검증. 결함 재현은 기대 실패로 구분 |
 | 2 | `fix/event-submission-errors` | 실제 저장 응답 확인, 실패·timeout 안내 | 성공 응답에만 성공 표시. preview 정책 분리. 관리자와 Apps Script 계약 확정 |
 | 3 | `fix/applicants-api-validation` | 요청 객체·upstream 상태/rows 검증 | null·타입 오류·외부 장애에 일관된 JSON; 정상/빈 rows·추천 조회 실패 fallback 검증 |
 | 4 | `fix/dialog-keyboard-lifecycle` | 공통 focus/Escape/scroll 복원, 입력 키 범위 | dropdown Escape는 Sheet 유지; Tab 제한·닫기 복원·이동 cleanup; 재신청 정책 확정 |
