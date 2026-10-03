@@ -46,8 +46,10 @@ async function withReferrerNames(rows) {
       cache: 'no-store',
     });
     const data = await res.json();
+    if (!data.ok) console.error('referral resolve not ok', res.status);
     if (data.ok) members = data.members || {};
-  } catch {
+  } catch (err) {
+    console.error('referral resolve failed', err?.message);
     return rows;
   }
 
