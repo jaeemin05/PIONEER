@@ -7,6 +7,8 @@
             --bg-top: #F7D6D0;
             --bg-bottom: #AEC4D4;
             --bg-gradient: linear-gradient(180deg, var(--bg-top) 0%, var(--bg-bottom) 100%);
+            --band-a: #F7D6D0;       /* 섹션 구분용 — 핑크 베이지 */
+            --band-b: #AEC4D4;       /* 섹션 구분용 — 더스티블루 */
             --ink-rgb: 28,38,52;
             --fg: #1C2634;           /* 본문/제목 글자 */
             --cream: #3A4656;
@@ -2111,3 +2113,12 @@
         @media (prefers-reduced-motion: reduce) {
             .event-reviews-grid.visible .event-review-img { animation: none; }
         }
+
+        /* ==================== SECTION BANDS ==================== */
+        /* 섹션마다 핑크 베이지/더스티블루를 번갈아 칠해서 구분. background-color만 바꿔서
+           섹션별 background-image(이벤트 히어로 글로우 등)는 그대로 유지됨.
+           홈 히어로는 사진이라 제외 — 히어로 하단 페이드가 --band-a로 끝나서 #opening과 이어짐. */
+        #opening, #heritage-teaser, #shop, #system { background-color: var(--band-a); }
+        #plaque-reveal, #narrative, #destination, footer { background-color: var(--band-b); }
+        #event-hero, #event-case, #event-gallery, #event-faq { background-color: var(--band-a); }
+        #event-concept, #event-mid-cta, #event-reviews, #event-footer { background-color: var(--band-b); }
