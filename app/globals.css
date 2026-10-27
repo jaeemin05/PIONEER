@@ -2159,3 +2159,17 @@
             --pink: #FF8FB4;          /* 인디고 위에서 읽히는 밝은 핑크 */
             color: var(--fg);
         }
+
+        /* ==================== PHONE CASE SHADOW ==================== */
+        /* 케이스 이미지는 투명 배경 PNG라 box-shadow(사각형) 대신 drop-shadow로 케이스 실루엣을 따라감.
+           검정 대신 팔레트 인디고로 물들인 2겹 그림자: 바로 아래 짧고 진한 접지 그림자 +
+           넓고 옅은 확산 그림자 — 라벤더 배경 위에 살짝 떠 있는 느낌. */
+        :root { --case-shadow: drop-shadow(0 2px 3px rgba(35,38,63,0.20)) drop-shadow(0 16px 24px rgba(66,72,116,0.30)); }
+        .shop-img img,
+        .plaque-reveal-img img,
+        .event-concept-img img,
+        .event-gallery-img,
+        .event-review-img:not(.event-review-teaser) img { filter: var(--case-shadow); }
+        /* 갤러리 이미지의 사각 테두리는 그림자를 상자 모양으로 만들어서 투명 처리 */
+        .event-gallery-img,
+        .event-gallery-img:hover { border-color: transparent; }
