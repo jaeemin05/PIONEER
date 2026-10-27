@@ -18,9 +18,9 @@ export default function EventShaderBackground() {
         uStrength={0.8}
         uDensity={0.6}
         uFrequency={3}
-        color1="#F5EFE1"
+        color1="#F7D6D0"
         color2="#AEC4D4"
-        color3="#E3D9C6"
+        color3="#EBCFCB"
         brightness={1.2}
         grain="off"
         cDistance={4.2}

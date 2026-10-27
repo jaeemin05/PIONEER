@@ -1,10 +1,10 @@
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
         :root {
-            /* 라이트 테마 — 크림(#F5EFE1)→더스티블루(#AEC4D4) 그라데이션 배경 위에 잉크색 글자.
+            /* 라이트 테마 — 핑크 베이지(#F7D6D0)→더스티블루(#AEC4D4) 그라데이션 배경 위에 잉크색 글자.
                포인트 컬러는 밝은 배경에서 읽히도록 네온(#B4FF00/#FF2D78)을 깊은 톤으로 낮춤:
                그린 #1F5E45, 핑크 #A8234F — 크림/블루 양쪽 끝에서 모두 AA(4.5:1) 근처 이상. */
-            --bg-top: #F5EFE1;
+            --bg-top: #F7D6D0;
             --bg-bottom: #AEC4D4;
             --bg-gradient: linear-gradient(180deg, var(--bg-top) 0%, var(--bg-bottom) 100%);
             --ink-rgb: 28,38,52;
@@ -79,7 +79,7 @@
             transition: background 0.4s ease, backdrop-filter 0.4s ease;
         }
         header.scrolled {
-            background: rgba(245,239,225,0.88);
+            background: rgba(247,214,208,0.88);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
             box-shadow: 0 1px 0 rgba(28,38,52,0.08);
@@ -1196,7 +1196,7 @@
            어두운 배경 가운데에 480px 카드가 그림자와 함께 떠 있고, 실제 폰
            화면(≤480px)에서는 카드가 화면 전체를 그대로 채움. */
         #event-page {
-            background: linear-gradient(180deg, #E9E2D2 0%, #9DB5C7 100%); /* 데스크톱에서 카드보다 한 톤 깊게 */
+            background: linear-gradient(180deg, #EBC4BD 0%, #9DB5C7 100%); /* 데스크톱에서 카드보다 한 톤 깊게 */
             min-height: 100vh;
             display: flex;
             justify-content: center;
@@ -1239,7 +1239,7 @@
             right: 0;
             bottom: 0;
             height: 30%;
-            background: linear-gradient(to bottom, rgba(245,239,225,0), var(--bg-top));
+            background: linear-gradient(to bottom, rgba(247,214,208,0), var(--bg-top));
             pointer-events: none;
             z-index: 2;
         }
@@ -1728,7 +1728,7 @@
             box-sizing: border-box;
             z-index: 90;
             padding: 14px 24px;
-            background: rgba(245,239,225,0.92);
+            background: rgba(247,214,208,0.92);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             border-top: 1px solid rgba(var(--ink-rgb),0.08);
