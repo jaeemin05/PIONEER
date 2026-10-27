@@ -2124,7 +2124,7 @@
            1→2→3→2→1→2→3 (밝음↔페리윙클이 숨 쉬듯 오가는 리듬). 홈 히어로는 하단 페이드가 --c-1로 끝남.
            푸터만 --c-4(인디고)로 바닥을 잡고, 안쪽 색 변수를 밝게 뒤집어 글자가 자동으로 밝아지게 함.
            새 섹션을 끼우면 이 체인의 순서를 같이 맞출 것. */
-        #opening,         #event-hero    { background-color: var(--c-1); background-image: linear-gradient(180deg, var(--c-1) 0%, var(--c-2) 100%); }
+        #opening                         { background-color: var(--c-1); background-image: linear-gradient(180deg, var(--c-1) 0%, var(--c-2) 100%); }
         #plaque-reveal,   #event-concept { background-color: var(--c-2); background-image: linear-gradient(180deg, var(--c-2) 0%, var(--c-3) 100%); }
         #heritage-teaser, #event-case    { background-color: var(--c-3); background-image: linear-gradient(180deg, var(--c-3) 0%, var(--c-2) 100%); }
         #narrative,       #event-mid-cta { background-color: var(--c-2); background-image: linear-gradient(180deg, var(--c-2) 0%, var(--c-1) 100%); }
@@ -2142,10 +2142,20 @@
             --gray: #B9C1E8;
             color: var(--fg);
         }
-        /* 이벤트 히어로는 브랜드 글로우를 그라데이션 위에 겹쳐서 유지 */
+        /* 이벤트 히어로 — 푸터와 같은 인디고로 페이지 위아래를 감쌈(맨 위 #353A60은 푸터 맨 아래와
+           거울처럼 맞춤). 글자가 히어로 높이의 ~64%에서 끝나서 68%까지 인디고를 유지하고, 글자 없는
+           아래 구간에서 다음 섹션 시작 색(--c-2)으로 풀림. 푸터처럼 안쪽 색 변수를 밝게 뒤집음. */
         #event-hero {
+            background-color: var(--c-4);
             background-image:
-                radial-gradient(ellipse 60% 50% at 30% 20%, rgba(var(--green-rgb),0.08), transparent 60%),
-                radial-gradient(ellipse 60% 50% at 75% 75%, rgba(var(--pink-rgb),0.06), transparent 60%),
-                linear-gradient(180deg, var(--c-1) 0%, var(--c-2) 100%);
+                radial-gradient(ellipse 60% 45% at 25% 15%, rgba(220,214,247,0.14), transparent 60%),
+                radial-gradient(ellipse 55% 40% at 80% 50%, rgba(255,143,180,0.12), transparent 60%),
+                linear-gradient(180deg, #353A60 0%, var(--c-4) 45%, var(--c-4) 68%, var(--c-2) 100%);
+            --fg: #F4EEFF;
+            --ink-rgb: 244,238,255;
+            --text-dim: rgba(244,238,255,0.78);
+            --green: #DCD6F7;
+            --gray: #B9C1E8;
+            --pink: #FF8FB4;          /* 인디고 위에서 읽히는 밝은 핑크 */
+            color: var(--fg);
         }
