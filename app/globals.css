@@ -1011,13 +1011,7 @@
         }
         .modal-submit:hover { background: var(--green); color: var(--navy); }
         .modal-submit:active { transform: scale(0.98); }
-        .event-apply-body .modal-submit {
-            background: #1f4fbf;
-            border-color: transparent;
-            color: var(--white);
-            font-weight: 700;
-        }
-        .event-apply-body .modal-submit:hover { background: #3b6fe0; color: var(--white); }
+        /* 딥블루 버전은 ODD 라이트 테마로 교체됨 — 아래 EVENT APPLY SHEET 섹션 참고 */
 
         /* 제출 완료 상태 */
         .modal-success {
@@ -1959,11 +1953,11 @@
             height: 100vh;
             height: 100dvh;
             overflow-y: auto;
-            background: #0a1222;
-            border: 1px solid rgba(180,255,0,0.2);
+            background: #fafbfa;
+            border: none;
             border-bottom: none;
             border-radius: 24px 24px 0 0;
-            padding: 20px 24px 40px;
+            padding: 28px 24px 40px;
             animation: event-sheet-up 0.3s var(--ease-out);
         }
         .event-sheet-close {
@@ -1974,16 +1968,16 @@
             width: 34px;
             height: 34px;
             border-radius: 50%;
-            background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(255,255,255,0.15);
-            color: var(--gray);
+            background: rgba(56,63,69,0.06);
+            border: 1px solid rgba(56,63,69,0.15);
+            color: #70787f;
             font-size: 14px;
             align-items: center;
             justify-content: center;
             cursor: pointer;
             transition: color 0.2s, background 0.2s;
         }
-        .event-sheet-close:hover { color: var(--white); background: rgba(255,255,255,0.1); }
+        .event-sheet-close:hover { color: #262b2f; background: rgba(56,63,69,0.12); }
         .event-apply-body { padding: 8px 0 0; }
         @keyframes event-sheet-up {
             from { transform: translateY(30px); opacity: 0; }
@@ -1996,31 +1990,90 @@
         @media (prefers-reduced-motion: reduce) {
             .event-sheet-overlay, .event-sheet { animation: none; }
         }
-        /* 신청 팝업 본문 — 흰색 + 선명하게 (액센트 색 라벨은 유지) */
-        .event-sheet .modal-sub,
-        .event-sheet .modal-note,
-        .event-sheet .form-label,
-        .event-sheet .event-mini-note,
-        .event-sheet .event-match-hit,
-        .event-sheet .event-agree,
-        .event-sheet .event-consent,
-        .event-sheet .event-consent-list dd {
-            color: var(--white);
-            font-weight: 500;
-            text-shadow: none;
+        /* ODD NC(odd-nc.vercel.app) 신청 폼 레퍼런스 — 시트 안에서만 라이트 테마로 전환.
+           .form-input/.form-label/.modal-* 는 사이트 전역 세션 모달(SessionModal)과 공유하는
+           클래스라 .event-sheet로 꼭 스코프해서 다른 곳(Header/Shop/Destination/Footer 모달)엔
+           영향 없게 함. 글씨 크기 확대는 이 라이트 테마 값에 이미 반영됨. */
+        .event-sheet .modal-eyebrow { color: #9aa3ab; font-size: 11px; }
+        .event-sheet .modal-title { color: #262b2f; }
+        .event-sheet .modal-sub { color: #70787f; font-weight: 400; font-size: 16px; }
+        .event-sheet .modal-note {
+            color: #70787f;
+            font-size: 13px;
+            border-top-color: rgba(56,63,69,0.12);
         }
-        /* 신청 팝업 글씨 크기 확대 */
-        .event-sheet .modal-eyebrow { font-size: 11px; }
-        .event-sheet .modal-sub { font-size: 16px; }
-        .event-sheet .modal-note,
+        .event-sheet .form-label {
+            font-family: 'Noto Sans KR', sans-serif;
+            text-transform: none;
+            letter-spacing: normal;
+            color: #262b2f;
+            font-weight: 700;
+            font-size: 15px;
+        }
+        .event-sheet .form-input,
+        .event-sheet .form-select,
+        .event-sheet .form-textarea {
+            color: #262b2f;
+            background: #fff;
+            border: 1.5px solid #d2e9e5;
+            border-bottom: 1.5px solid #d2e9e5;
+            border-radius: 14px;
+            padding: 14px 16px;
+        }
+        .event-sheet .form-input::placeholder,
+        .event-sheet .form-textarea::placeholder { color: #9aa3ab; }
+        .event-sheet .form-input:focus,
+        .event-sheet .form-select:focus,
+        .event-sheet .form-textarea:focus { border-color: #383f45; }
+        .event-sheet .form-select { background: #fff; color: #262b2f; }
+        .event-sheet .form-select option { background: #fff; color: #262b2f; }
         .event-sheet .event-mini-note,
-        .event-sheet .event-match-hit { font-size: 13px; }
-        .event-sheet .form-label { font-size: 15px; }
-        .event-sheet .event-agree { font-size: 15px; }
-        .event-sheet .event-chip { font-size: 14px; }
-        .event-sheet .event-consent { font-size: 14px; }
-        .event-sheet .event-consent-title { font-size: 15px; }
-        .event-sheet .event-consent-list dt { font-size: 12px; }
+        .event-sheet .event-match-hit { color: #9aa3ab; font-size: 13px; }
+        .event-sheet .event-chip-counter { color: #70787f; font-weight: 600; }
+        .event-chip {
+            background: #fff;
+            border: 1.5px solid #d2e9e5;
+            color: #262b2f;
+        }
+        .event-chip.active {
+            background: #383f45;
+            border-color: #383f45;
+            color: #fff;
+        }
+        .event-select-trigger {
+            background: #fff;
+            border: 1.5px solid #d2e9e5;
+            border-bottom: 1.5px solid #d2e9e5;
+            border-radius: 14px;
+            padding: 14px 32px 14px 16px;
+            color: #262b2f;
+        }
+        .event-select-trigger::after { right: 16px; border-color: #383f45; }
+        .event-select-trigger.invalid { border-color: var(--warn); }
+        .event-select-placeholder { color: #9aa3ab; }
+        .event-select-list {
+            background: #fff;
+            border: 1.5px solid #d2e9e5;
+            box-shadow: 0 16px 40px rgba(56,63,69,0.15);
+        }
+        .event-select-option { color: #262b2f; }
+        .event-select-option:hover { background: rgba(56,63,69,0.05); }
+        .event-select-option.active { color: #383f45; font-weight: 700; }
+        .event-match-preview {
+            color: #262b2f;
+            border: 1px solid #d2e9e5;
+            background: #eef8f6;
+        }
+        .event-agree { color: #70787f; font-size: 15px; }
+        .event-agree-note {
+            display: inline-block;
+            margin-top: 6px;
+            font-family: 'Noto Sans KR', sans-serif;
+            font-style: italic;
+            font-size: 11px;
+            letter-spacing: 0.02em;
+            color: #3a8f7e;
+        }
         /* 개인정보 동의서 접기/펼치기 */
         .event-consent-toggle {
             display: flex;
@@ -2029,26 +2082,40 @@
             width: 100%;
             margin-top: 4px;
             padding: 12px 16px;
-            background: rgba(255,255,255,0.02);
-            border: 1px solid rgba(255,255,255,0.12);
-            color: var(--white);
+            background: #fff;
+            border: 1px solid #d2e9e5;
+            border-radius: 14px;
+            color: #262b2f;
             font-family: 'Noto Sans KR', sans-serif;
             font-size: 14px;
-            font-weight: 500;
+            font-weight: 600;
             text-align: left;
             cursor: pointer;
         }
-        .event-consent-chevron { transition: transform 0.2s ease; }
+        .event-consent-chevron { transition: transform 0.2s ease; color: #70787f; }
         .event-consent-chevron[data-open="true"] { transform: rotate(180deg); }
-        .event-agree-note {
-            display: inline-block;
-            margin-top: 6px;
-            font-family: 'Noto Sans KR', sans-serif;
-            font-style: italic;
-            font-size: 11px;
-            letter-spacing: 0.02em;
-            color: var(--green);
+        .event-consent {
+            border: 1px solid #d2e9e5;
+            background: #f3f9f8;
+            color: #70787f;
+            font-size: 14px;
         }
+        .event-consent-title { color: #262b2f; font-size: 15px; }
+        .event-consent-list dt { color: #3a8f7e; font-size: 12px; }
+        .event-consent-list dd { color: #70787f; }
+        .event-apply-body .modal-submit {
+            background: #383f45;
+            border-color: transparent;
+            color: #fafbfa;
+            font-family: 'Noto Sans KR', sans-serif;
+            font-size: 14.5px;
+            font-weight: 700;
+            letter-spacing: normal;
+            text-transform: none;
+            border-radius: 16px;
+            padding: 16px;
+        }
+        .event-apply-body .modal-submit:hover { background: #262b2f; color: #fafbfa; }
         /* 리뷰 이미지: 그리드가 화면에 들어오면(.visible) 칸마다 순서대로 아래에서 열림 */
         .event-reviews-grid.visible .event-review-img {
             animation: event-review-reveal 0.9s var(--ease-out) both;
