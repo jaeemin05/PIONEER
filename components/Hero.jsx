@@ -28,7 +28,7 @@ export default function Hero() {
           inset: 0,
           zIndex: 1,
           background:
-            'linear-gradient(to bottom, rgba(2,6,15,0.55) 0%, rgba(2,6,15,0.3) 50%, rgba(2,6,15,0.75) 100%)',
+            'linear-gradient(to bottom, rgba(2,6,15,0.55) 0%, rgba(2,6,15,0.25) 55%, rgba(245,239,225,1) 100%)',
         }}
       />
 

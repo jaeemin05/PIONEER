@@ -44,11 +44,13 @@ Hero, Plaque Reveal, Heritage(spacecraft/plaque), Narrative 6개, Shop Signal 9�
 ## 폼/CTA 동작
 - 세션 모달은 `components/SessionModalContext.jsx`의 Context로 열고 닫음 (`useSessionModal()`). DOM 쿼리셀렉터 방식(`data-session-open`) 아님.
 - 모달 제출은 현재 **UI 단계에서만 성공 처리**됨 — 실제 백엔드/이메일 전송 연동 없음.
-- 폼 필수값 미입력 시 테두리를 `var(--warn)`(#FF6B4A)로 표시 — `--green`을 쓰지 않는 이유는 그린이 이미 "Signal/CTA"를 의미해서 에러 색으로 재사용하면 의미가 충돌하기 때문 (apple-design 스킬 리뷰에서 발견).
+- 폼 필수값 미입력 시 테두리를 `var(--warn)`(#C2410C)로 표시 — `--green`을 쓰지 않는 이유는 그린이 이미 "Signal/CTA"를 의미해서 에러 색으로 재사용하면 의미가 충돌하기 때문 (apple-design 스킬 리뷰에서 발견).
 
 ## 컨벤션
 - 화면에 보이는 카피는 한국어, 클래스명/id/영어 라벨(SIGNAL, ORIGIN 등)은 영어 유지.
-- 색상/폰트는 `app/globals.css`의 `:root` CSS 변수로 통일 관리: `--navy`(배경), `--green`(Signal/포인트), `--pink`(Origin/CTA 강조), `--gray`, `--cream`, `--text-dim`(본문 보조 텍스트, WCAG AA 대비 확보용), `--warn`(폼 에러 전용).
+- **라이트 테마(2026-10-27 전환)**: 사이트 전체 배경은 `body`의 `--bg-gradient`(크림 `#F5EFE1` → 더스티블루 `#AEC4D4`) 하나가 페이지 길이만큼 이어지고, 섹션들은 `background: transparent`. 섹션에 불투명 배경을 새로 칠하면 그라데이션이 끊기니 주의.
+- 색상/폰트는 `app/globals.css`의 `:root` CSS 변수로 통일 관리: `--fg`(본문/제목 잉크 #1C2634), `--navy`(이제 배경이 아니라 진한 잉크 — `btn-filled` 배경 등), `--green`(#1F5E45, Signal/포인트), `--pink`(#A8234F, Origin/CTA 강조), `--gray`, `--text-dim`(본문 보조 텍스트, WCAG AA 대비 확보용), `--warn`(폼 에러 전용), `--white`(**사진·포인트 컬러 채움 위 글자에만**). 반투명 선/배경은 `rgba(var(--ink-rgb), a)`, 포인트 틴트는 `rgba(var(--green-rgb)/--pink-rgb, a)`.
+- 홈 히어로는 어두운 우주 사진이라 예외: 사진 위 로고/태그라인/스크롤 전 헤더는 흰 글자, 히어로 하단은 크림으로 페이드. 헤더는 스크롤 후 크림 유리 + 잉크 글자.
 - 신규 섹션 추가 시 기존 컴포넌트처럼 `.section-label`, `fade-in` 클래스(`hooks/useFadeIn.js` 재사용), placeholder(`.ph`/`.ph-dark`) 패턴을 그대로 따를 것.
 - 컴포넌트는 섹션당 하나, 대부분 `'use client'` (스크롤/페이드인/인터랙션 때문). `app/page.js`만 순수 서버 컴포넌트.
 
