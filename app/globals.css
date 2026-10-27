@@ -1226,23 +1226,6 @@
                 radial-gradient(ellipse 60% 50% at 75% 75%, rgba(var(--pink-rgb),0.06), transparent 60%),
                 transparent;
         }
-        /* 이전엔 CSS 그라데이션으로 은은한 성운 느낌만 냈는데, 이제
-           EventShaderBackground(실제 애니메이션되는 WebGL 셰이더)가 그
-           자리를 대신함. 콘텐츠 자식들은 그 위에 뜨도록 z-index 지정 —
-           셰이더 캔버스 쪽은 컴포넌트 자체의 inline style(position:absolute;
-           z-index:0)이 여기보다 우선해서 적용되므로 그대로 둬도 안전함. */
-        #event-hero > * { position: relative; z-index: 1; }
-        #event-hero::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            height: 30%;
-            background: linear-gradient(to bottom, rgba(247,214,208,0), var(--bg-top));
-            pointer-events: none;
-            z-index: 2;
-        }
 
         /* 좌표/스캔 느낌의 모서리 괄호 장식 — 탐사선이 목표를 조준하는 느낌 */
         .event-coord-frame { position: relative; }
