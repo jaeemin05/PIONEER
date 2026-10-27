@@ -48,7 +48,7 @@ Hero, Plaque Reveal, Heritage(spacecraft/plaque), Narrative 6개, Shop Signal 9�
 
 ## 컨벤션
 - 화면에 보이는 카피는 한국어, 클래스명/id/영어 라벨(SIGNAL, ORIGIN 등)은 영어 유지.
-- **라이트 테마(2026-10-27 전환)**: 사이트 전체 배경은 `body`의 `--bg-gradient`(핑크 베이지 `#F7D6D0` → 더스티블루 `#AEC4D4`) 이 깔려 있고, 그 위에 섹션마다 `--band-a`(핑크 베이지)/`--band-b`(더스티블루)를 번갈아 칠해 구분함(globals.css 맨 아래 SECTION BANDS — id별 `background-color`만 지정). 새 섹션을 추가하면 이 목록에 넣어 순서를 맞출 것.
+- **라이트 테마(2026-10-27 전환)**: 웜 파스텔 4색 `--c-pink`(#FFCED8)·`--c-peach`(#FFDDDD)·`--c-light`(#FFF4DE)·`--c-beige`(#FFE8C4). 섹션마다 위→아래 그라데이션을 주되 각 섹션의 끝 색 = 다음 섹션의 시작 색이라 경계 없이 이어짐(globals.css 맨 아래 SECTION GRADIENTS, 홈/이벤트 섹션 id별 지정). 새 섹션을 끼우면 이 체인 순서를 같이 맞출 것. `body`의 `--bg-gradient`는 섹션 밖(admin 등) 폴백.
 - 색상/폰트는 `app/globals.css`의 `:root` CSS 변수로 통일 관리: `--fg`(본문/제목 잉크 #1C2634), `--navy`(이제 배경이 아니라 진한 잉크 — `btn-filled` 배경 등), `--green`(#1F5E45, Signal/포인트), `--pink`(#A8234F, Origin/CTA 강조), `--gray`, `--text-dim`(본문 보조 텍스트, WCAG AA 대비 확보용), `--warn`(폼 에러 전용), `--white`(**사진·포인트 컬러 채움 위 글자에만**). 반투명 선/배경은 `rgba(var(--ink-rgb), a)`, 포인트 틴트는 `rgba(var(--green-rgb)/--pink-rgb, a)`.
 - 홈 히어로는 어두운 우주 사진이라 예외: 사진 위 로고/태그라인/스크롤 전 헤더는 흰 글자, 히어로 하단은 크림으로 페이드. 헤더는 스크롤 후 크림 유리 + 잉크 글자.
 - 신규 섹션 추가 시 기존 컴포넌트처럼 `.section-label`, `fade-in` 클래스(`hooks/useFadeIn.js` 재사용), placeholder(`.ph`/`.ph-dark`) 패턴을 그대로 따를 것.
