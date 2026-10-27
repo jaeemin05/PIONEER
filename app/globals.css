@@ -1472,25 +1472,49 @@
         }
         .event-mid-cta-inner p { font-size: 21px; line-height: 1.6; }
 
-        /* GALLERY */
-        .event-gallery-scroll {
+        /* GALLERY — 자동으로 흘러가는 무한 슬라이드.
+           트랙(목록 2벌)을 -50%까지 옮기면 두 번째 벌이 정확히 첫 벌 자리에 오므로 이음새 없이 반복.
+           간격은 gap 대신 각 이미지의 margin-right로 줘야 한 벌의 폭이 정확히 트랙의 절반이 됨.
+           아래 padding은 케이스 drop-shadow가 잘리지 않을 여유. 양 끝은 mask로 페이드. */
+        .event-gallery-marquee {
+            overflow: hidden;
+            padding: 8px 0 40px;
+            -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+            mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+        }
+        .event-gallery-track {
             display: flex;
-            gap: 12px;
-            overflow-x: auto;
-            padding: 0 24px 8px;
-            scrollbar-width: none;
-            scroll-snap-type: x mandatory;
+            width: max-content;
+            animation: eventGalleryMarquee 22s linear infinite;
+            will-change: transform;
         }
-        .event-gallery-scroll::-webkit-scrollbar { display: none; }
+        .event-gallery-marquee:hover .event-gallery-track { animation-play-state: paused; }
+        @keyframes eventGalleryMarquee {
+            from { transform: translateX(0); }
+            to   { transform: translateX(-50%); }
+        }
+        /* 원본 PNG(4:3)는 가운데 케이스 양옆이 투명이라, 칸을 좁게(140px) 잘라 케이스끼리 붙여 보이게 함
+           — 380px 폭에서 2~3개가 함께 흘러감. 높이를 키워 케이스 자체는 약 100px 폭으로 커짐. */
         .event-gallery-img {
-            flex: 0 0 220px;
-            height: 280px;
+            flex: 0 0 140px;
+            width: 140px;
+            height: 340px;
+            margin-right: 8px;
             object-fit: cover;
-            border: 1px solid rgba(var(--ink-rgb),0.08);
-            scroll-snap-align: center;
-            transition: transform 0.25s ease, border-color 0.25s ease;
+            transition: transform 0.25s ease;
         }
-        .event-gallery-img:hover { transform: scale(1.04); border-color: rgba(var(--green-rgb),0.35); }
+        .event-gallery-img:hover { transform: scale(1.04); }
+        /* 동작 줄이기 설정이면 자동 재생 대신 손으로 넘기는 스크롤 */
+        @media (prefers-reduced-motion: reduce) {
+            .event-gallery-track { animation: none; }
+            .event-gallery-marquee {
+                overflow-x: auto;
+                scrollbar-width: none;
+                -webkit-mask-image: none;
+                mask-image: none;
+            }
+            .event-gallery-marquee::-webkit-scrollbar { display: none; }
+        }
 
         /* REVIEWS */
         .event-reviews-grid {
@@ -2170,6 +2194,3 @@
         .event-concept-img img,
         .event-gallery-img,
         .event-review-img:not(.event-review-teaser) img { filter: var(--case-shadow); }
-        /* 갤러리 이미지의 사각 테두리는 그림자를 상자 모양으로 만들어서 투명 처리 */
-        .event-gallery-img,
-        .event-gallery-img:hover { border-color: transparent; }
