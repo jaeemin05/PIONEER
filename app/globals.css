@@ -1424,8 +1424,7 @@
             width: 220px;
             position: relative;
             z-index: 1;
-            -webkit-mask-image: radial-gradient(ellipse 72% 82% at center, #000 58%, transparent 100%);
-            mask-image: radial-gradient(ellipse 72% 82% at center, #000 58%, transparent 100%);
+            /* 투명 배경 케이스 PNG라 가장자리를 지우는 마스크 없이 그대로 — 그림자는 --case-shadow */
             animation: eventConceptFloat 5s ease-in-out infinite;
         }
         .event-concept-img img {
