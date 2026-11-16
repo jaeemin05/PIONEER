@@ -4,8 +4,8 @@ import { useEffect, useState } from "react";
 import EventSelect from "./EventSelect";
 
 const REF_KEY = "pioneer-ref";
-// 1997년생 ~ 2009년생
-const BIRTH_YEARS = Array.from({ length: 2009 - 1997 + 1 }, (_, i) => 1997 + i);
+// 1999년생 ~ 2009년생
+const BIRTH_YEARS = Array.from({ length: 2009 - 1999 + 1 }, (_, i) => 1999 + i);
 // 이벤트 대상(20대) 밖이라 신청 완료 화면만 보여주고 시트에는 보내지 않는 출생연도
 const EXCLUDED_BIRTH_YEAR = "2009";
 function formatPhone(raw) {
@@ -26,7 +26,7 @@ function formatPhone(raw) {
 
 const BIRTH_YEAR_OPTIONS = BIRTH_YEARS.map((y) => ({
   value: String(y),
-  label: `${String(y).slice(2)}년생${y === 1997 ? " 이상" : y === 2009 ? " 이하" : ""}`,
+  label: `${String(y).slice(2)}년생${y === 1999 ? " 이상" : y === 2009 ? " 이하" : ""}`,
 }));
 const REF_PATTERN = /^[A-Za-z0-9_-]{1,32}$/;
 
@@ -296,7 +296,7 @@ export default function EventApplyForm() {
 
           <div className="form-group">
             <label className="form-label" htmlFor="event-region">
-              거주지 (배송 가능 인근역)
+              거주지 (수령 가능 인근역)
             </label>
             <input
               className="form-input"
