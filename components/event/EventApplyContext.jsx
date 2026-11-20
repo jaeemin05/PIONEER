@@ -5,7 +5,7 @@ import { createContext, useCallback, useContext, useEffect, useMemo, useState } 
 const EventApplyContext = createContext(null);
 
 // 이벤트 페이지마다 다른 문구 — /event 기본값, 다른 페이지는 Provider에 copy로 넘김
-const DEFAULT_COPY = { headline: '오픈 기념 이벤트', title: 'OPEN EVENT', name: '오픈 기념', eligibility: '서울·경기 거주 20대 한정!' };
+const DEFAULT_COPY = { headline: '오픈 기념 이벤트', title: 'OPEN EVENT', name: '오픈 기념', eligibility: '서울·경기 거주 20대 한정!', limit: 30 };
 
 export function EventApplyProvider({ children, copy = DEFAULT_COPY }) {
   const [isOpen, setIsOpen] = useState(false);

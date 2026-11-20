@@ -30,7 +30,7 @@ export default function EventHero() {
         <div className="event-promo-cond">
           나의 우주를 담은 폰케이스를 디자인해드려요!
           <br />
-          선착순 30명 · 커스텀 <span style={{ color: "var(--green)" }}>폰케이스</span> 제작 무료 이벤트
+          선착순 {copy.limit}명 · 커스텀 <span style={{ color: "var(--green)" }}>폰케이스</span> 제작 무료 이벤트
         </div>
         <button type="button" className="btn-filled event-cta" onClick={open}>
           지금 참여하기 →
