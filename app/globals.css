@@ -2023,6 +2023,13 @@
             font-weight: 700;
             font-size: 15px;
         }
+        /* 라벨 옆 부가 설명 — 본 라벨보다 작고 흐리게 */
+        .event-sheet .event-label-note {
+            margin-left: 6px;
+            font-size: 12px;
+            font-weight: 400;
+            color: #8a9096;
+        }
         .event-sheet .form-input,
         .event-sheet .form-select,
         .event-sheet .form-textarea {

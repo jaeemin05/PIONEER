@@ -299,6 +299,7 @@ export default function EventApplyForm() {
           <div className="form-group">
             <label className="form-label" htmlFor="event-region">
               거주지 (수령 가능 인근역)
+              <span className="event-label-note">택배비 산정을 위해 필요해요</span>
             </label>
             <input
               className="form-input"
