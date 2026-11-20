@@ -24,7 +24,7 @@ export default function EventHero() {
       </p>
 
       <div className="event-promo-card event-coord-frame fade-in" ref={fadeRef}>
-        <div className="event-promo-headline">{copy.headline}</div>
+        {copy.headline && <div className="event-promo-headline">{copy.headline}</div>}
         <div className="event-promo-title">{copy.title}</div>
         <div className="event-promo-eligibility">서울·경기 거주 20대 한정!</div>
         <div className="event-promo-cond">

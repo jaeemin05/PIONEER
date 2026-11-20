@@ -1367,6 +1367,7 @@
             letter-spacing: -0.02em;
             color: var(--fg);
             margin-bottom: 10px;
+            white-space: pre-line; /* 문구의 \n을 줄바꿈으로 */
         }
         .event-promo-eligibility {
             font-family: var(--mono);
