@@ -4,7 +4,10 @@ import { createContext, useCallback, useContext, useEffect, useMemo, useState } 
 
 const EventApplyContext = createContext(null);
 
-export function EventApplyProvider({ children }) {
+// 이벤트 페이지마다 다른 문구 — /event 기본값, 다른 페이지는 Provider에 copy로 넘김
+const DEFAULT_COPY = { headline: '오픈 기념 이벤트', title: 'OPEN EVENT', name: '오픈 기념' };
+
+export function EventApplyProvider({ children, copy = DEFAULT_COPY }) {
   const [isOpen, setIsOpen] = useState(false);
   const open = useCallback(() => setIsOpen(true), []);
   const close = useCallback(() => setIsOpen(false), []);
@@ -22,7 +25,7 @@ export function EventApplyProvider({ children }) {
     };
   }, [isOpen]);
 
-  const value = useMemo(() => ({ isOpen, open, close }), [isOpen, open, close]);
+  const value = useMemo(() => ({ isOpen, open, close, copy }), [isOpen, open, close, copy]);
   return <EventApplyContext.Provider value={value}>{children}</EventApplyContext.Provider>;
 }
 

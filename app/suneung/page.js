@@ -12,9 +12,11 @@ export const metadata = {
   title: 'PIONEER — 수험생 기념 이벤트',
 };
 
+const SUNEUNG_COPY = { headline: 'EXAM EVENT', title: '수험생 기념 무료 이벤트', name: '수험생 기념' };
+
 export default function SuneungEventPage() {
   return (
-    <EventApplyProvider>
+    <EventApplyProvider copy={SUNEUNG_COPY}>
       <div id="event-page">
         <div className="event-app">
           <EventHero />

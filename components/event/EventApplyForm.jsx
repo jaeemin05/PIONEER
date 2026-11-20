@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import EventSelect from "./EventSelect";
+import { useEventApply } from "./EventApplyContext";
 
 const REF_KEY = "pioneer-ref";
 // 1999년생 ~ 2009년생
@@ -95,6 +96,7 @@ function matchPlanets(active) {
 const SCRIPT_URL = process.env.NEXT_PUBLIC_EVENT_SCRIPT_URL;
 
 export default function EventApplyForm() {
+  const { copy } = useEventApply();
   const [selected, setSelected] = useState(new Set());
   const [name, setName] = useState("");
   const [birthYear, setBirthYear] = useState("");
@@ -210,12 +212,12 @@ export default function EventApplyForm() {
     <section className="event-apply-body">
       <div className="section-inner event-apply-inner">
         <div className="modal-eyebrow">Apply</div>
-        <h2 className="modal-title">오픈 기념 이벤트 신청하기</h2>
+        <h2 className="modal-title">{copy.name} 이벤트 신청하기</h2>
         <p className="modal-sub">
           아래 정보를 남겨주시면 확인 후 기재해주신 연락처로 연락드려요.
         </p>
         <p className="event-promo-line">
-          PIONEER 오픈 기념 이벤트 · 무료로 만나보세요
+          PIONEER {copy.name} 이벤트 · 무료로 만나보세요
         </p>
 
         <form className="modal-form" onSubmit={handleSubmit} noValidate>

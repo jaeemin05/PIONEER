@@ -6,7 +6,7 @@ import { useFadeIn } from "@/hooks/useFadeIn";
 
 export default function EventMidCta() {
   const fadeRef = useFadeIn();
-  const { open } = useEventApply();
+  const { open, copy } = useEventApply();
 
   return (
     <section id="event-mid-cta" className="section section-dark">
@@ -14,7 +14,7 @@ export default function EventMidCta() {
         <p>
           당신의 이야기도 하나의 PLANET이 될 수 있어요
           <br />
-          오픈 기념으로 폰케이스 무료 제작 이벤트 신청을 받고 있어요.
+          {copy.name}으로 폰케이스 무료 제작 이벤트 신청을 받고 있어요.
         </p>
         <button type="button" className="btn-filled event-cta" onClick={open}>
           지금 참여하기 →

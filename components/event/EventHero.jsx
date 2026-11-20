@@ -5,7 +5,7 @@ import { useEventApply } from "./EventApplyContext";
 
 export default function EventHero() {
   const fadeRef = useFadeIn();
-  const { open } = useEventApply();
+  const { open, copy } = useEventApply();
 
   return (
     <section id="event-hero">
@@ -24,8 +24,8 @@ export default function EventHero() {
       </p>
 
       <div className="event-promo-card event-coord-frame fade-in" ref={fadeRef}>
-        <div className="event-promo-headline">오픈 기념 이벤트</div>
-        <div className="event-promo-title">OPEN EVENT</div>
+        <div className="event-promo-headline">{copy.headline}</div>
+        <div className="event-promo-title">{copy.title}</div>
         <div className="event-promo-eligibility">서울·경기 거주 20대 한정!</div>
         <div className="event-promo-cond">
           나의 우주를 담은 폰케이스를 디자인해드려요!
