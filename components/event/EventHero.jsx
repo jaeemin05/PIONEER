@@ -26,7 +26,7 @@ export default function EventHero() {
       <div className="event-promo-card event-coord-frame fade-in" ref={fadeRef}>
         {copy.headline && <div className="event-promo-headline">{copy.headline}</div>}
         <div className="event-promo-title">{copy.title}</div>
-        <div className="event-promo-eligibility">서울·경기 거주 20대 한정!</div>
+        <div className="event-promo-eligibility">{copy.eligibility}</div>
         <div className="event-promo-cond">
           나의 우주를 담은 폰케이스를 디자인해드려요!
           <br />

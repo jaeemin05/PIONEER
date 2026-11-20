@@ -12,7 +12,7 @@ export const metadata = {
   title: 'PIONEER — 수험생 기념 이벤트',
 };
 
-const SUNEUNG_COPY = { headline: '', title: '수험생 기념\n무료 이벤트', name: '수험생 기념' };
+const SUNEUNG_COPY = { headline: '', title: '수험생 기념\n무료 이벤트', name: '수험생 기념', eligibility: '서울·경기 거주 수험생 한정!' };
 
 export default function SuneungEventPage() {
   return (
