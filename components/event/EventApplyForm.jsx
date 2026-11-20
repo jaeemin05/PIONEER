@@ -151,7 +151,7 @@ export default function EventApplyForm() {
     setSubmitting(true);
 
     const data = {
-      source: "event-page",
+      source: copy.source,
       words: active.join(", "),
       matchedPlanets: matches.map((m) => m.name).join(", "),
       name: name.trim(),
