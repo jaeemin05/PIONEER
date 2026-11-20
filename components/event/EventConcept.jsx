@@ -32,7 +32,7 @@ export default function EventConcept() {
         <div className="event-concept-visual fade-in" ref={imgFadeRef}>
           <div className="event-concept-img">
             <img
-              src="/shop/origin/org20.png"
+              src="/plaque-reveal/origin-plaque-mockup.png"
               alt="PIONEER Origin PLANET 목업"
             />
           </div>
