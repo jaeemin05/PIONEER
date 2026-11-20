@@ -5,10 +5,6 @@ import EventSelect from "./EventSelect";
 import { useEventApply } from "./EventApplyContext";
 
 const REF_KEY = "pioneer-ref";
-// 1999년생 ~ 2009년생
-const BIRTH_YEARS = Array.from({ length: 2009 - 1999 + 1 }, (_, i) => 1999 + i);
-// 이벤트 대상(20대) 밖이라 신청 완료 화면만 보여주고 시트에는 보내지 않는 출생연도
-const EXCLUDED_BIRTH_YEAR = "2009";
 function formatPhone(raw) {
   const digits = raw.replace(/\D/g, "").slice(0, 11);
   if (digits.startsWith("02")) {
@@ -25,10 +21,15 @@ function formatPhone(raw) {
   return `${digits.slice(0, 3)}-${digits.slice(3, 7)}-${digits.slice(7)}`;
 }
 
-const BIRTH_YEAR_OPTIONS = BIRTH_YEARS.map((y) => ({
-  value: String(y),
-  label: `${String(y).slice(2)}년생${y === 1999 ? " 이상" : y === 2009 ? " 이하" : ""}`,
-}));
+// 1999년생 이상 ~ maxYear년생 이하. 마지막(maxYear 이하)은 이벤트 대상 밖이라
+// 신청 완료 화면만 보여주고 시트에는 보내지 않음. desc면 어린 나이부터 나열.
+function birthYearOptions(maxYear, desc) {
+  const opts = Array.from({ length: maxYear - 1999 + 1 }, (_, i) => 1999 + i).map((y) => ({
+    value: String(y),
+    label: `${String(y).slice(2)}년생${y === 1999 ? " 이상" : y === maxYear ? " 이하" : ""}`,
+  }));
+  return desc ? opts.reverse() : opts;
+}
 const REF_PATTERN = /^[A-Za-z0-9_-]{1,32}$/;
 
 const PLANET_TYPES = {
@@ -166,7 +167,7 @@ export default function EventApplyForm() {
       setSubmitted(true);
     };
 
-    if (birthYear === EXCLUDED_BIRTH_YEAR) {
+    if (birthYear === String(copy.maxBirthYear)) {
       finish();
       return;
     }
@@ -285,7 +286,7 @@ export default function EventApplyForm() {
             </label>
             <EventSelect
               id="event-birth-year"
-              options={BIRTH_YEAR_OPTIONS}
+              options={birthYearOptions(copy.maxBirthYear, copy.birthDesc)}
               value={birthYear}
               placeholder="선택해주세요"
               invalid={!!errors.birthYear}
